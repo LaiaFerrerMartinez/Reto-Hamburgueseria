@@ -602,72 +602,84 @@ body {
 
 @media only screen and (min-width: 768px) {
     .login-form {
-        width: 50%; /* Hacerlo más ancho en pantallas medianas */
+        width: 50%; /* Mantener el ancho */
         height: 280px;
-        justify-content: space-evenly; /* DISTRIBUIR verticalmente */
+        padding-left: 30px; /* Más espacio a la izquierda */
+        padding-right: 30px; /* Más espacio a la derecha */
+        justify-content: space-evenly;
     }
 
     .login-form label,
-    .login-form input {
-        font-size: 16px; /* Aumentar el tamaño de la fuente */
+    .login-form input,
+    .login-form button {
+        font-size: 18px;
+        width: 62.5%;
+        margin-left: 17%;
+        box-sizing: border-box; /* Asegura que el padding no afecte el tamaño total */
+    }
+
+    .login-form button {
+        display: block; /* Asegura que el botón se comporte como un bloque */
     }
 
     .texto1 {
-        font-size: 15px; /* Aumentar un poco el tamaño del texto */
-        margin-left: 20px; /* Aumentar margen izquierdo en pantallas medianas */
+        font-size: 15px;
+        margin-left: 20px;
     }
 
     .texto2 {
-        font-size: 26px; /* Aumentar el tamaño del texto */
-        margin-left: 20px; /* Aumentar margen izquierdo en pantallas medianas */
+        font-size: 26px;
+        margin-left: 20px;
     }
 }
 
+
 @media only screen and (min-width: 889px) {
     .login-form {
-        width: 40%; /* Más ancho en pantallas grandes */
+        width: 40%; /* Mantener el ancho */
         height: 310px;
+        padding-left: 40px; /* Aumentar más el padding a la izquierda */
+        padding-right: 40px; /* Aumentar más el padding a la derecha */
         justify-content: space-evenly;
     }
 
     .login-form label,
     .login-form input {
-        font-size: 18px; /* Aumentar el tamaño de la fuente */
+        font-size: 16px;
     }
 
     .texto1 {
-        font-size: 17px; /* Aumentar un poco más el tamaño del texto */
-        margin-left: 30px; /* Aumentar el margen izquierdo */
+        font-size: 17px;
+        margin-left: 30px;
     }
 
     .texto2 {
-        font-size: 30px; /* Aumentar el tamaño del texto */
-        margin-left: 30px; /* Aumentar el margen izquierdo */
+        font-size: 30px;
+        margin-left: 30px;
     }
 }
 
 @media only screen and (min-width: 1241px) {
     .login-form {
-        width: 35%; /* Hacer el formulario aún más ancho en pantallas muy grandes */
+        width: 35%; /* Mantener el ancho */
         height: 340px;
+        padding-left: 50px; /* Aumentar aún más el padding a la izquierda */
+        padding-right: 50px; /* Aumentar aún más el padding a la derecha */
         justify-content: space-evenly;
     }
 
     .login-form label,
     .login-form input {
-        font-size: 20px; /* Aumentar el tamaño de la fuente */
+        font-size: 20px;
     }
 
     .texto1 {
-        font-size: 18px; /* Aumentar el tamaño del texto */
-        margin-left: 35px; /* Aumentar el margen izquierdo */
+        font-size: 18px;
+        margin-left: 35px;
     }
 
     .texto2 {
-        font-size: 32px; /* Aumentar el tamaño del texto */
-        margin-left: 35px; /* Aumentar el margen izquierdo */
+        font-size: 32px;
+        margin-left: 35px;
     }
 }
-
-
-
