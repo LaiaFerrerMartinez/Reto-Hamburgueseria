@@ -2,262 +2,237 @@ body {
   margin: 0;
   padding: 0;
   font-family: Georgia, serif;
+  width: 100%;
 }
 
-  header {
-    background-color: #000000;
-    color: #ffffff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 110px;
-    padding: 0 20px;
-    position: relative;
-  }
-  
-  /* Enlaces generales del header */
-  header a {
-    text-decoration: none;
-    color: inherit;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  /* Menú hamburguesa */
+header {
+  background-color: #000000;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 110px;
+  padding: 0 10px;
+  width: 100%;
+  max-width: 100%;
+  position: fixed;
+  z-index: 1000;
+  overflow: hidden;
+}
+
+/* Enlaces generales del header */
+header a {
+  text-decoration: none;
+  color: inherit;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Menú hamburguesa */
+.menu-hamburguesa {
+  position: absolute;
+  top: 22.5px;
+  left: 25px;
+  width: 35px;
+  height: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.menu-hamburguesa span {
+  display: block;
+  height: 1.5px;
+  width: 100%;
+  background-color: #ffffff;
+  border-radius: 2px;
+  pointer-events: none; /* Para que el clic lo capture el <a> */
+}
+
+/* Logo */
+.logo img {
+  width: 200px;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+/* Iconos derecha */
+.iconos-derecha {
+  position: absolute;
+  top: 10px;
+  right: 25px;
+  display: flex;
+  align-items: center;
+}
+
+.iconos-derecha a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+}
+
+.iconos-derecha img {
+  width: 40px;
+  height: auto;
+  object-fit: cover;
+}
+
+.textos-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  font-size: 10px;
+  position: absolute;
+  top: 70px;
+  left: 0;
+  padding: 0 20px;
+  bottom: 20px;
+  z-index: 1;
+}
+
+/* Botones de textos */
+.special-offers,
+.make-your-order {
+  white-space: nowrap;
+  padding: 7.5px 10px;
+  border-radius: 10px;
+  border: solid 1px #ffffff;
+}
+
+/* Special Offers */
+.special-offers {
+  margin-left: 28px;
+  text-align: center;
+  font-size: 10px;
+}
+
+/* Make Your Order */
+.make-your-order {
+  text-align: center;
+  margin-left: auto;
+  margin-right: 60px;
+  font-size: 10px;
+}
+
+/* Hover en botones */
+.special-offers:hover,
+.make-your-order:hover {
+  background-color: #ffffff;
+  color: #000000;
+  transition: all 0.45s ease;
+}
+
+/* Hover en iconos (opcional, si quieres que cambie) */
+.cesta:hover img,
+.perfil:hover img,
+.menu-hamburguesa:hover span {
+  filter: brightness(0) invert(1);
+}
+
+ /* Ajustes para pantallas grandes */
+@media only screen and (min-width: 768px) {
+    header {
+        padding-top: 20px;
+        height: 80px;
+        justify-content: center; /* Centra los elementos horizontalmente */
+    }
+
+    .menu-hamburguesa {
+        position: absolute;
+        left: 25px; /* Ajusta la posición del menú hamburguesa */
+        top: 35px;
+    }
+
+    .logo img {
+        width: 300px; /* Ajusta el tamaño del logo */
+        height: auto;
+        margin-top: 25px;
+    }
+
+    .textos-header {
+        font-size: 12px; /* Ajusta el tamaño de los textos */
+        top: 15px;
+    }
+
+    .cesta, .perfil {
+        font-size: 15px; /* Aumenta el tamaño de la fuente */
+    }
+
+    .special-offers, .make-your-order {
+        font-size: 15px;
+    }
+
+    .special-offers {
+        margin-left: 300px; /* Ajusta el margen para la sección de "special offers" */
+    }
+
+    .make-your-order {
+        bottom: 100px;
+        margin-right: 350px; /* Ajusta el margen para la sección de "make your order" */
+    }
+
+    .iconos-derecha {
+        margin-right: 100px;
+        top: 25px;
+    }
+
+    .textos-header {
+      pointer-events: none;
+    }
+    
+    .textos-header a {
+      pointer-events: auto;
+    }
+    
+}
+
+@media only screen and (min-width: 890px) and (max-width: 1241px) {
+    .special-offers {
+        margin-left: 150px; /* Ajusta el margen para la sección de "special offers" */
+    }
+
+    .make-your-order {
+        margin-right: 200px; /* Ajusta el margen para la sección de "make your order" */
+    }
+
+    .iconos-derecha {
+        margin-right: 50px;
+    }
+}
+
+
+
+@media only screen and (min-width: 769px) and (max-width: 889px) {
+    .special-offers {
+        margin-left: 50px; /* Ajusta el margen para la sección de "special offers" */
+    }
+
+    .make-your-order {
+        margin-right: 170px; /* Ajusta el margen para la sección de "make your order" */
+    }
+
+    .iconos-derecha {
+        margin-right: 50px;
+    }
+}
+@media only screen and (min-width: 1400px) {
   .menu-hamburguesa {
-    position: absolute;
-    top: 22.5px;
-    left: 25px;
-    width: 35px;
-    height: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    cursor: pointer;
+    left: 50px; /* Ajusta la posición del menú hamburguesa */
   }
-  
-  .menu-hamburguesa span {
-    display: block;
-    height: 1.5px;
-    width: 100%;
-    background-color: #ffffff;
-    border-radius: 2px;
-    pointer-events: none; /* Para que el clic lo capture el <a> */
-  }
-  
-  /* Logo */
-  .logo img {
-    width: 200px;
-    height: auto;
-    margin-bottom: 20px;
-  }
-  
-  /* Iconos derecha */
   .iconos-derecha {
-    position: absolute;
-    top: 10px;
-    right: 25px;
-    display: flex;
-    align-items: center;
-  }
-  
-  .iconos-derecha a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
-    cursor: pointer;
-  }
-  
+    margin-right: 50px;
+    gap: 20px;
+  } 
   .iconos-derecha img {
-    width: 40px;
-    height: auto;
-    object-fit: cover;
+    width: 56px;
   }
-  
-  .textos-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    font-size: 10px;
-    position: absolute;
-    top: 70px;
-    left: 0;
-    padding: 0 20px;
-    bottom: 20px;
-    z-index: 1;
-  }
-  
-  /* Botones de textos */
-  .special-offers,
-  .make-your-order {
-    white-space: nowrap;
-    padding: 7.5px 10px;
-    border-radius: 10px;
-    border: solid 1px #ffffff;
-  }
-  
-  /* Special Offers */
-  .special-offers {
-    margin-left: 28px;
-    text-align: center;
-    font-size: 10px;
-  }
-  
-  /* Make Your Order */
-  .make-your-order {
-    text-align: center;
-    margin-left: auto;
-    margin-right: 60px;
-    font-size: 10px;
-  }
-  
-  /* Hover en botones */
-  .special-offers:hover,
-  .make-your-order:hover {
-    background-color: #ffffff;
-    color: #000000;
-    transition: all 0.45s ease;
-  }
-  
-  /* Hover en iconos (opcional, si quieres que cambie) */
-  .cesta:hover img,
-  .perfil:hover img,
-  .menu-hamburguesa:hover span {
-    filter: brightness(0) invert(1);
-  }
-  /* ICONOS HAMBURGUESA, CESTA, PERFIL */
-  /* Estilos para pantallas más grandes */
-  @media (min-width: 768px) {
-    .subscribe-form {
-      flex-direction: row;
-      justify-content: center;
-    }
-  
-    .footer-links {
-      flex-direction: row;
-      justify-content: center;
-      gap: 80px;
-      text-align: left;
-    }
-  
-    .footer-column ul li {
-      font-size: 15px;
-    }
-  
-    .newsletter h3 {
-      font-size: 22px;
-    }
-  
-    .subscribe-form input[type="email"] {
-      font-size: 16px;
-    }
-  
-    .subscribe-form button {
-      font-size: 16px;
-    }
-  
-    .logo-Footer img {
-      width: 180px;
-    }
-  
-    .countries {
-      font-size: 12px;
-    }
-  
-    .social-icons {
-      gap: 30px;
-    }
-  }
-   /* Ajustes para pantallas grandes */
-  @media only screen and (min-width: 768px) {
-      header {
-          padding-top: 20px;
-          height: 80px;
-          justify-content: center; /* Centra los elementos horizontalmente */
-      }
-  
-      .menu-hamburguesa {
-          position: absolute;
-          left: 25px; /* Ajusta la posición del menú hamburguesa */
-          top: 35px;
-      }
-  
-      .logo img {
-          width: 300px; /* Ajusta el tamaño del logo */
-          height: auto;
-          margin-top: 25px;
-      }
-  
-      .textos-header {
-          font-size: 12px; /* Ajusta el tamaño de los textos */
-          top: 15px;
-      }
-  
-      .cesta, .perfil {
-          font-size: 15px; /* Aumenta el tamaño de la fuente */
-      }
-  
-      .special-offers, .make-your-order {
-          font-size: 15px;
-      }
-  
-      .special-offers {
-          margin-left: 300px; /* Ajusta el margen para la sección de "special offers" */
-      }
-  
-      .make-your-order {
-          bottom: 100px;
-          margin-right: 350px; /* Ajusta el margen para la sección de "make your order" */
-      }
-  
-      .iconos-derecha {
-          margin-right: 100px;
-          top: 25px;
-      }
-  
-      .textos-header {
-        pointer-events: none;
-      }
-      
-      .textos-header a {
-        pointer-events: auto;
-      }
-      
-  }
-  
-  @media only screen and (min-width: 890px) and (max-width: 1241px) {
-      .special-offers {
-          margin-left: 150px; /* Ajusta el margen para la sección de "special offers" */
-      }
-  
-      .make-your-order {
-          margin-right: 200px; /* Ajusta el margen para la sección de "make your order" */
-      }
-  
-      .iconos-derecha {
-          margin-right: 50px;
-      }
-  }
-  
-  
-  
-  @media only screen and (min-width: 769px) and (max-width: 889px) {
-      .special-offers {
-          margin-left: 50px; /* Ajusta el margen para la sección de "special offers" */
-      }
-  
-      .make-your-order {
-          margin-right: 170px; /* Ajusta el margen para la sección de "make your order" */
-      }
-  
-      .iconos-derecha {
-          margin-right: 50px;
-      }
-  }
+}
 
   .make-your-order-section {
     font-family: Georgia, serif;
@@ -267,12 +242,13 @@ body {
   }
   
   .make-order-header h2 {
-    color: rgb(166, 45, 45);
+    color: rgb(180, 16, 16); ;
     font-size: 0.9rem;
+    padding-top: 118px;
   }
   
   .make-order-header h1 {
-    font-size: 1.7rem;
+    font-size: 1.6rem;
     margin-bottom: 2rem;
     margin-top: -4px;
   }
@@ -304,7 +280,7 @@ body {
   }
   
   .make-order-card h4 {
-    color: rgb(166, 45, 45);
+    color: rgb(180, 16, 16); ;
     font-size: 0.9rem;
     font-weight: bold;
   }
@@ -437,13 +413,13 @@ body {
       padding: 2rem 5rem;
     }
     .make-order-header h2 {
-      font-size: 1rem;
+      font-size: 1.1rem;
     }
   
     .make-order-header h1 {
-      font-size: 1.8rem;
-      margin-bottom: 2rem;
-      margin-top: -2px;
+      font-size: 1.9rem;
+      margin-bottom: 3rem;
+      margin-top: -8px;
     }
     .make-order-options {
       flex-direction: row;
@@ -479,13 +455,13 @@ body {
     }
   
     .make-order-header h2 {
-      font-size: 1rem;
+      font-size: 1.1rem;
     }
   
     .make-order-header h1 {
-      font-size: 1.8rem;
-      margin-bottom: 2rem;
-      margin-top: -2px;
+      font-size: 1.9rem;
+      margin-bottom: 3rem;
+      margin-top: -8px;
     }
     .make-order-options {
       flex-direction: row;
@@ -523,7 +499,8 @@ body {
     }
   }
   
-  .footer {
+  /* Estilos base: Mobile First */
+.footer {
   background-color: #fdfaf6;
   padding: 40px 20px;
   font-family: Georgia, 'Times New Roman', Times, serif;
@@ -534,7 +511,7 @@ body {
 /* Animaciones suaves */
 .footer a,
 .footer button,
-.footer li,
+.footer li a,
 .footer svg {
   transition: all 0.3s ease;
 }
@@ -566,11 +543,13 @@ body {
   max-width: 300px;
   font-size: 14px;
   outline: none;
+  font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 /* Botón Subscribe */
 .subscribe-form button {
   background-color: #000;
+  font-family: Georgia, 'Times New Roman', Times, serif;
   color: #fff;
   border: none;
   padding: 10px 20px;
@@ -578,10 +557,14 @@ body {
   cursor: pointer;
   font-size: 14px;
   border-radius: 30px; /* Opcional, para el botón redondeado como el tuyo */
+  transition: color 0.4 ease;
+  
 }
 
 .subscribe-form button:hover {
-  background-color: #b82929;
+  background-image: url("./img/madera\ roja-2.png");
+  background-size: cover;
+  background-position: center;
   color: white;
 }
 
@@ -613,15 +596,17 @@ body {
 }
 
 /* List items */
-.footer-column ul li {
+.footer-column ul li a {
   margin-bottom: 8px;
-  font-size: 14px;
+  font-size: 15px;
   cursor: pointer;
   transition: all 0.2s ease;
+  color: #000;
+  text-decoration: none;
 }
 
 /* Hover en los li: cambiar color y tamaño */
-.footer-column ul li:hover {
+.footer-column ul li a:hover {
   color: #c92a2a;
   
 }
@@ -658,23 +643,18 @@ body {
   gap: 20px;
 }
 
-/* Iconos SVG */
-.social-icons a svg {
-  width: 24px;
-  height: 24px;
-  fill: black;
+.social-icons a i {
+  font-size: 24px;
+  color: black;
+  transition: transform 0.3s ease, color 0.3s ease;
 }
 
-/* Hover en los iconos sociales */
-.social-icons a:hover svg {
-  fill: #b82929;
+.social-icons a:hover i {
+  color: #b82929;
   transform: scale(1.2);
 }
 
 @media (min-width: 540px) {
-  .contact-section {
-    padding: 3rem 5rem;
-  }
   /* Formularios en línea */
   .subscribe-form {
     flex-direction: row;
@@ -686,7 +666,7 @@ body {
   /* Inputs más grandes */
   .subscribe-form input[type="email"] {
     width: 300px;
-    font-size: 16px;
+    font-size: 15px;
     text-align: left;
   }
 
@@ -713,7 +693,7 @@ body {
   }
 
   .footer-column ul li {
-    font-size: 15px;
+    font-size: 18px;
     margin-bottom: 10px;
   }
 
@@ -740,7 +720,7 @@ body {
     gap: 30px;
   }
 
-  .social-icons a svg {
+  .social-icons a i {
     width: 28px;
     height: 28px;
   }
