@@ -2,9 +2,6 @@ body {
     margin: 0;
     padding: 0;
     font-family: Georgia, serif;
-    background-image: url('./contenido/fondo_pag derecha.jpg');
-    background-size: cover; /* Que cubra toda la pantalla */
-    background-repeat: no-repeat; /* Que no se repita */
 }
 
   
@@ -135,7 +132,9 @@ body {
   }
   /* ICONOS HAMBURGUESA, CESTA, PERFIL */
   
-  
+  .reservar {
+    background-image: url('./contenido/fondo_pag derecha.jpg');
+  }
   
   
   
@@ -625,8 +624,9 @@ body {
 
 .texto1 {
     color: #c92a2a;
-    margin-top: 20px;
+    padding-top: 20px;
     margin-bottom: 0px;
+    margin-top: 0;
     font-size: 13px; /* Tamaño original en pantallas pequeñas */
     margin-left: 10px; /* Margen izquierdo más pequeño */
 }
