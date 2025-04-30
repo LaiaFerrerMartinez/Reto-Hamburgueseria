@@ -371,7 +371,7 @@ header a {
 
   .login-form label,
   .login-form input {
-      font-size: 16px;
+      font-size: 18px;
   }
   .login-button-link  {
     display: block; /* Asegura que el botón se comporte como un bloque */
@@ -403,7 +403,7 @@ header a {
       font-size: 18px;
   }
   .login-form input {
-      font-size: 15px;
+      font-size: 17px;
   }
 
   .texto1 {
