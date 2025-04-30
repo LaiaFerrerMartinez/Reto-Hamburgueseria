@@ -256,7 +256,6 @@ header a {
   margin-top: -5px;
     font-size: 1.5rem; 
     font-weight: 800; 
-   
 }
 .arrow-path { 
     margin-top: 1rem; 
@@ -517,7 +516,7 @@ header a {
   }
     .path-header h1 { 
       font-size: 1.9rem; 
-      margin-top: -3px; 
+      margin-top: -8px; 
   }
     .arrow-path { 
       width: 800px; 
