@@ -2,6 +2,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: Georgia, serif;
+  width: 100%;
 }
 
 header {
@@ -11,8 +12,12 @@ header {
   align-items: center;
   justify-content: center;
   height: 110px;
-  padding: 0 20px;
-  position: relative;
+  padding: 0 10px;
+  width: 100%;
+  max-width: 100%;
+  position: fixed;
+  z-index: 1000;
+  overflow: hidden;
 }
 
 /* Enlaces generales del header */
@@ -129,54 +134,7 @@ header a {
 .menu-hamburguesa:hover span {
   filter: brightness(0) invert(1);
 }
-/* ICONOS HAMBURGUESA, CESTA, PERFIL */
 
-
-
-
-
-/* Estilos para pantallas más grandes */
-@media (min-width: 768px) {
-  .subscribe-form {
-    flex-direction: row;
-    justify-content: center;
-  }
-
-  .footer-links {
-    flex-direction: row;
-    justify-content: center;
-    gap: 80px;
-    text-align: left;
-  }
-
-  .footer-column ul li {
-    font-size: 15px;
-  }
-
-  .newsletter h3 {
-    font-size: 22px;
-  }
-
-  .subscribe-form input[type="email"] {
-    font-size: 16px;
-  }
-
-  .subscribe-form button {
-    font-size: 16px;
-  }
-
-  .logo-Footer img {
-    width: 180px;
-  }
-
-  .countries {
-    font-size: 12px;
-  }
-
-  .social-icons {
-    gap: 30px;
-  }
-}
  /* Ajustes para pantallas grandes */
 @media only screen and (min-width: 768px) {
     header {
@@ -263,30 +221,47 @@ header a {
         margin-right: 50px;
     }
 }
+@media only screen and (min-width: 1400px) {
+  .menu-hamburguesa {
+    left: 50px; /* Ajusta la posición del menú hamburguesa */
+  }
+  .iconos-derecha {
+    margin-right: 50px;
+    gap: 20px;
+  } 
+  .iconos-derecha img {
+    width: 56px;
+  }
+}
 .pick-your-path { 
     padding: 2rem 3rem; 
     background: url("./img/fondo_pag\ derecha.jpg"); 
     font-family: Georgia, "Times New Roman", Times, serif; 
+    
 }
 .path-header { 
     text-align: left; 
+    padding-top: 90px;
     position: relative; 
     margin-bottom: 1rem; 
     margin-left: 10px; 
 }
 .path-header h2 { 
     font-size: 0.8rem; 
-    color: rgb(166, 45, 45); 
+    color: rgb(180, 16, 16); 
     font-weight: bold; 
+    
 }
 .path-header h1 { 
+  margin-top: -5px;
     font-size: 1.5rem; 
     font-weight: 800; 
-    margin-top: -6px; 
+   
 }
 .arrow-path { 
     margin-top: 1rem; 
     line-height: 0; 
+    max-width: 100%; 
 }
 .arrow-path img { 
     width: 190px; 
@@ -336,10 +311,10 @@ header a {
 
 .info h4 { 
     font-size: 0.8rem; 
-    color: rgb(166, 45, 45); 
+    color: rgb(180, 16, 16); 
 }
 .info h3 { 
-    margin-top: -8px; 
+    margin-top: -2px; 
     font-size: 1.1rem; 
     font-weight: bold; 
     margin-bottom: 1rem; 
@@ -394,6 +369,7 @@ header a {
 }
   .path-header h2 { 
     font-size: 0.85rem; 
+    margin-bottom: 8px;
 }
   .path-header h1 { 
     font-size: 1.6rem; 
@@ -605,6 +581,7 @@ header a {
     transition: transform 0.3s ease; /* animación suave para el zoom */
 }
   }
+/* Estilos base: Mobile First */
 .footer {
   background-color: #fdfaf6;
   padding: 40px 20px;
@@ -616,7 +593,7 @@ header a {
 /* Animaciones suaves */
 .footer a,
 .footer button,
-.footer li,
+.footer li a,
 .footer svg {
   transition: all 0.3s ease;
 }
@@ -648,11 +625,13 @@ header a {
   max-width: 300px;
   font-size: 14px;
   outline: none;
+  font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 /* Botón Subscribe */
 .subscribe-form button {
   background-color: #000;
+  font-family: Georgia, 'Times New Roman', Times, serif;
   color: #fff;
   border: none;
   padding: 10px 20px;
@@ -660,10 +639,14 @@ header a {
   cursor: pointer;
   font-size: 14px;
   border-radius: 30px; /* Opcional, para el botón redondeado como el tuyo */
+  transition: color 0.4 ease;
+  
 }
 
 .subscribe-form button:hover {
-  background-color: #b82929;
+  background-image: url("./img/madera\ roja-2.png");
+  background-size: cover;
+  background-position: center;
   color: white;
 }
 
@@ -695,15 +678,17 @@ header a {
 }
 
 /* List items */
-.footer-column ul li {
+.footer-column ul li a {
   margin-bottom: 8px;
-  font-size: 14px;
+  font-size: 15px;
   cursor: pointer;
   transition: all 0.2s ease;
+  color: #000;
+  text-decoration: none;
 }
 
 /* Hover en los li: cambiar color y tamaño */
-.footer-column ul li:hover {
+.footer-column ul li a:hover {
   color: #c92a2a;
   
 }
@@ -740,16 +725,14 @@ header a {
   gap: 20px;
 }
 
-/* Iconos SVG */
-.social-icons a svg {
-  width: 24px;
-  height: 24px;
-  fill: black;
+.social-icons a i {
+  font-size: 24px;
+  color: black;
+  transition: transform 0.3s ease, color 0.3s ease;
 }
 
-/* Hover en los iconos sociales */
-.social-icons a:hover svg {
-  fill: #b82929;
+.social-icons a:hover i {
+  color: #b82929;
   transform: scale(1.2);
 }
 
@@ -765,7 +748,7 @@ header a {
   /* Inputs más grandes */
   .subscribe-form input[type="email"] {
     width: 300px;
-    font-size: 16px;
+    font-size: 15px;
     text-align: left;
   }
 
@@ -792,7 +775,7 @@ header a {
   }
 
   .footer-column ul li {
-    font-size: 15px;
+    font-size: 18px;
     margin-bottom: 10px;
   }
 
@@ -819,7 +802,7 @@ header a {
     gap: 30px;
   }
 
-  .social-icons a svg {
+  .social-icons a i {
     width: 28px;
     height: 28px;
   }
@@ -860,4 +843,3 @@ header a {
     transform: translateX(-50%);
   }
 }
-
