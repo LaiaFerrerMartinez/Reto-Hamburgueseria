@@ -33,7 +33,7 @@ body, html {
 
 /* ==== PANEL IZQUIERDO === */
 .left-panel {
-    background-image: url('/Sign-In/contenido/fondo\ pag\ izq.png');
+    background-image: url('./contenido/fondo\ pag\ izq.png');
     height: 40vh;
 }
 
