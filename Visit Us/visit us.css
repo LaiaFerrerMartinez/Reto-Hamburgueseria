@@ -250,12 +250,16 @@ header a {
     font-size: 0.8rem; 
     color: rgb(180, 16, 16); 
     font-weight: bold; 
+    animation: fadeInUp 0.75s ease-out forwards;
+    opacity: 0; /* Importante para que empiece invisible */
     
 }
 .path-header h1 { 
   margin-top: -5px;
     font-size: 1.5rem; 
     font-weight: 800; 
+    animation: fadeInUp 0.9s ease-out forwards;
+    opacity: 0; /* Importante para que empiece invisible */
 }
 .arrow-path { 
     margin-top: 1rem; 
@@ -268,6 +272,8 @@ header a {
     height: 80px; 
     display: block; 
     margin-top: -15px; 
+    animation: fadeInUp 0.7s ease-out forwards;
+    opacity: 0; /* Importante para que empiece invisible */
 }
 
 .locations { 
@@ -306,11 +312,15 @@ header a {
     width: 100%; 
     text-align: left; 
     transition: transform 0.3s ease;
+    animation: fadeInUp 1s ease-out forwards;
+    opacity: 0; /* Importante para que empiece invisible */
 }
 
 .info h4 { 
     font-size: 0.8rem; 
     color: rgb(180, 16, 16); 
+    animation: fadeInUp 0.9s ease-out forwards;
+    opacity: 0; /* Importante para que empiece invisible */
 }
 .info h3 { 
     margin-top: -2px; 
@@ -328,6 +338,8 @@ header a {
     border-radius: 2rem; 
     font-weight: bold; 
     transition: box-shadow 0.3s ease, transform 0.3s ease;
+    animation: fadeInUp 1.2s ease-out forwards;
+    opacity: 0; /* Importante para que empiece invisible */
 }
 .btn:hover { 
     box-shadow: 0 0 0 1.1px rgb(0, 0, 0); /* simula que el borde crece */
@@ -336,7 +348,8 @@ header a {
 .map { 
     width: 100%; 
     text-align: center; 
-    
+    animation: fadeInUp 1s ease-out forwards;
+    opacity: 0; /* Importante para que empiece invisible */
 }
 .map img { 
     width: 100%; 
@@ -344,6 +357,7 @@ header a {
     border-radius: 1rem; 
     border: solid 2px rgb(0, 0, 0);
     transition: transform 0.3s ease; /* animación suave para el zoom */
+    
 }
 .map img:hover {
     transform: scale(1.01); /* ligero zoom */
@@ -358,6 +372,16 @@ header a {
 }
 .map iframe:hover {
     transform: scale(1.02); /* ligero zoom */
+}
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 @media only screen and (min-width: 589px) and (max-width: 717px) {
   .pick-your-path { 
