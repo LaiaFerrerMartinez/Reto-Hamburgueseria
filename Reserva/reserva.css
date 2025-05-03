@@ -262,7 +262,7 @@ header a {
   color: white;
   margin-top: 10px; /* Menor margen en los labels */
   font-size: 13px; /* Font-size aún más pequeño */
-  animation: fadeInUp 0.6s ease-out forwards;
+  animation: fadeInUp 0.8s ease-out forwards;
   opacity: 10; /* Importante para que empiece invisible */
   
 }
@@ -276,7 +276,7 @@ header a {
   font-size: 12px;
   padding-left: 20px;
   position: relative;
-  animation: fadeInUp 0.18s ease-out forwards;
+  animation: fadeInUp 0.7s ease-out forwards;
   opacity: 0; /* Importante para que empiece invisible */
   
 }
@@ -298,7 +298,7 @@ header a {
   padding-left: 20px;
   color: #808080; /* Color de texto gris */
   background-color: #f0f0f0; /* Fondo gris claro */
-  animation: fadeInUp 0.6s ease-out forwards;
+  animation: fadeInUp 0.9s ease-out forwards;
   opacity: 10; /* Importante para que empiece invisible */
 }
 
@@ -333,8 +333,8 @@ header a {
   color: black;
   margin-bottom: 18px;
   transition: background-color 0.3s;
-  animation: fadeInUp 0.6s ease-out forwards;
-  opacity: 10; /* Importante para que empiece invisible */
+  animation: fadeInUp 1s ease-out forwards;
+  opacity: 0; /* Importante para que empiece invisible */
 }
 
 .login-button-link:hover {
@@ -344,8 +344,8 @@ header a {
 .texto {
   padding-left: 27px;
   padding-top: 138px;
-  animation: fadeInUp 0.6s ease-out forwards;
-  opacity: 10; /* Importante para que empiece invisible */
+  animation: fadeInUp 0.8s ease-out forwards;
+  opacity: 0; /* Importante para que empiece invisible */
 }
 
 .texto1 {
