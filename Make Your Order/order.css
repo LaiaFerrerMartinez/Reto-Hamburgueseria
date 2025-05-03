@@ -283,9 +283,15 @@ header a {
     align-items: center;
     text-align: center;
     gap: 1rem;
-    
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    will-change: transform;
     
   }
+  .make-order-card:hover {
+    transform: scale(0.993); /* crece sutilmente en todas direcciones */
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12); /* sombra suave */
+
+}
   
   .make-order-card h4 {
     color: rgb(180, 16, 16); ;
@@ -328,7 +334,7 @@ header a {
   
   .btn:hover {
     transform: scale(1.03);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 0 1.1px rgb(0, 0, 0);
   }
   @keyframes fadeInUp {
     from {
