@@ -256,8 +256,6 @@ header a {
   box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.4); /* Menor sombra */
   margin-bottom: 55px; /* Menor margin-bottom */
   margin-top: 20px;
-  animation: fadeInUp 0.6s ease-out forwards;
-  opacity: 10; /* Importante para que empiece invisible */
 }
 
 .login-form label {
