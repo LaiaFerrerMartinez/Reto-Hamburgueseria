@@ -259,7 +259,7 @@ header a {
 .payment-methods a {
   opacity: 0;
   transform: translateY(20px);
-  animation: fadeInUp 0.6s forwards;
+  animation: fadeInUp 1.3s forwards;
 }
 
 .payment-methods a:nth-child(1) { animation-delay: 0.1s; }
@@ -300,6 +300,7 @@ header a {
     margin-bottom: 55px; /* Menor margin-bottom */
     margin-top: 20px;
     
+    
 }
 
 .login-form input[type="date"] {
@@ -311,7 +312,7 @@ header a {
   color: white;
   margin-top: 10px; /* Menor margen en los labels */
   font-size: 13px; /* Font-size aún más pequeño */
-  animation: fadeInUp 0.6s ease-out forwards;
+  animation: fadeInUp 0.75s ease-out forwards;
     opacity: 0; /* Importante para que empiece invisible */
 }
 
@@ -325,7 +326,7 @@ header a {
   padding-left: 20px;
   color: #808080; /* Color de texto gris */
   background-color: #f0f0f0; /* Fondo gris claro */
-  animation: fadeInUp 0.6s ease-out forwards;
+  animation: fadeInUp 0.9s ease-out forwards;
     opacity: 0; /* Importante para que empiece invisible */
 }
 
@@ -345,7 +346,7 @@ header a {
   color: black;
   margin-bottom: 18px;
   transition: background-color 0.3s;
-  animation: fadeInUp 0.6s ease-out forwards;
+  animation: fadeInUp 1s ease-out forwards;
     opacity: 0; /* Importante para que empiece invisible */
 }
 
@@ -356,10 +357,15 @@ header a {
 .texto {
   padding-left: 27px;
   padding-top: 138px;
+  animation: fadeInUp 1s ease-out forwards;
+    opacity: 0; /* Importante para que empiece invisible */
+  
 }
 .textos2 {
   padding-left: 27px;
   padding-top: 15px;
+  animation: fadeInUp 1s ease-out forwards;
+    opacity: 0; /* Importante para que empiece invisible */
   
 }
 
