@@ -1,3 +1,14 @@
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -5,22 +16,26 @@ body {
   width: 100%;
 }
 
+/* Header principal */
 header {
-  background-color: #000000;
-  color: #ffffff;
+  background-color: #000;
+  color: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
   height: 110px;
   padding: 0 10px;
   width: 100%;
-  max-width: 100%;
   position: fixed;
   z-index: 1000;
   overflow: hidden;
+  padding-left: 0;
+}
+main {
+  padding-top: 80px;
 }
 
-/* Enlaces generales del header */
+/* Enlaces genéricos */
 header a {
   text-decoration: none;
   color: inherit;
@@ -29,36 +44,14 @@ header a {
   justify-content: center;
 }
 
-/* Menú hamburguesa */
-.menu-hamburguesa {
-  position: absolute;
-  top: 22.5px;
-  left: 25px;
-  width: 35px;
-  height: 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  cursor: pointer;
-}
-
-.menu-hamburguesa span {
-  display: block;
-  height: 1.5px;
-  width: 100%;
-  background-color: #ffffff;
-  border-radius: 2px;
-  pointer-events: none; /* Para que el clic lo capture el <a> */
-}
-
-/* Logo */
+/* Logo del header */
 .logo img {
   width: 200px;
   height: auto;
   margin-bottom: 20px;
 }
 
-/* Iconos derecha */
+/* Iconos a la derecha */
 .iconos-derecha {
   position: absolute;
   top: 10px;
@@ -66,7 +59,6 @@ header a {
   display: flex;
   align-items: center;
 }
-
 .iconos-derecha a {
   display: flex;
   align-items: center;
@@ -75,13 +67,13 @@ header a {
   height: 40px;
   cursor: pointer;
 }
-
 .iconos-derecha img {
   width: 40px;
   height: auto;
   object-fit: cover;
 }
 
+/* Textos bajo el header */
 .textos-header {
   display: flex;
   align-items: center;
@@ -96,44 +88,531 @@ header a {
   z-index: 1;
 }
 
-/* Botones de textos */
+/* Botones de texto */
 .special-offers,
 .make-your-order {
   white-space: nowrap;
   padding: 7.5px 10px;
   border-radius: 10px;
-  border: solid 1px #ffffff;
+  border: 1px solid #fff;
 }
-
-/* Special Offers */
 .special-offers {
   margin-left: 28px;
-  text-align: center;
   font-size: 10px;
 }
-
-/* Make Your Order */
 .make-your-order {
-  text-align: center;
   margin-left: auto;
   margin-right: 60px;
   font-size: 10px;
 }
-
-/* Hover en botones */
 .special-offers:hover,
 .make-your-order:hover {
-  background-color: #ffffff;
-  color: #000000;
+  background-color: #fff;
+  color: #000;
   transition: all 0.45s ease;
 }
 
-/* Hover en iconos (opcional, si quieres que cambie) */
+/* Hover en iconos */
 .cesta:hover img,
-.perfil:hover img,
-.menu-hamburguesa:hover span {
+.perfil:hover img {
   filter: brightness(0) invert(1);
 }
+
+/* Menú hamburguesa */
+.menu-hamburguesa {
+  position: absolute;
+  top: 25px;
+  left: 25px;
+  width: 35px;            /* ancho inicial */
+  height: 40px;           /* altura para área clicable */
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  cursor: pointer;
+  z-index: 1001;
+  transition: width .3s ease-in-out;
+}
+/* Al hover y checked: ancho ampliado y baja la cruz */
+.menu-hamburguesa:hover,
+#menu-toggle:checked + .menu-hamburguesa {
+  width: 60px;            /* ancho ampliado en hover/checked */
+  top: 30px;              /* baja la cruz solo en hover y checked */
+}
+.menu-hamburguesa span {
+  display: block;
+  height: 1.5px;
+  width: 100%;
+  background-color: #fff;
+  border-radius: 2px;
+  pointer-events: none;
+  transition: transform .3s, opacity .3s, background-color .3s, height .3s;
+  transform-origin: center;
+}
+.menu-hamburguesa:hover,
+#menu-toggle:checked + .menu-hamburguesa {
+  width: 60px;              /* ancho ampliado solo en hover y checked */
+}
+
+.menu-hamburguesa span {
+  display: block;
+  height: 1.5px;
+  width: 100%;
+  background-color: #fff;
+  border-radius: 2px;
+  pointer-events: none;
+  transition: transform .3s, opacity .3s, background-color .3s, height .3s;
+  transform-origin: center;
+}
+
+/* Nav full-screen oculto arriba */
+.nav-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #faf5ef;
+  padding: 4rem 2rem;
+  transform: translateY(-100%);
+  transition: transform .7s ease-in-out;
+  z-index: 1000;
+  overflow-y: auto;
+}
+
+/* Coloca logo + cesta al nivel de la cruz */
+.nav-menu .menu-header {
+  position: absolute;
+  top: 7.5px;
+  left: 0px;
+  right: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  z-index: 1001;
+}
+
+/* Logo centrado */
+.nav-menu .logo-menu img {
+  width: 237px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+/* Cesta a la derecha con margen */
+.nav-menu .cesta-menu {
+  position: absolute;
+  right: 25px;
+  margin-right: 15px;        /* margen derecho aumentado */
+}
+.nav-menu .cesta-menu img {
+  width: 70px;
+  height: auto;
+  display: block;
+}
+
+/* Lista de enlaces */
+.nav-menu ul {
+  padding-top: 50px;
+  list-style: none;
+  padding-left: 25px;
+  margin: 0;
+}
+.nav-menu li {
+  margin-bottom: 1rem;
+}
+.nav-menu a {
+  display: inline-block;
+  text-decoration: none;
+  font-family: 'Roboto Slab', serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #000;
+  border-bottom: 2px solid transparent;
+  padding-bottom: .2rem;
+  transition: border-color .2s;
+}
+
+.nav-menu a.texto-grande {
+  font-size: 27px;
+}
+
+.nav-menu a.texto-pequeno {
+  font-size: 20px;
+}
+
+/* Abrir menú */
+#menu-toggle:checked + .menu-hamburguesa + .nav-menu,
+.menu-hamburguesa:hover + .nav-menu {
+  transform: translateY(0);
+}
+
+/* Transformación a X */
+#menu-toggle:not(:checked) + .menu-hamburguesa:hover span:nth-child(1),
+#menu-toggle:checked + .menu-hamburguesa span:nth-child(1) {
+  height: 4px;
+  background-color: #5E442C;
+  transform: translateY(10.5px) rotate(45deg);
+  z-index: 2;
+}
+#menu-toggle:not(:checked) + .menu-hamburguesa:hover span:nth-child(2),
+#menu-toggle:checked + .menu-hamburguesa span:nth-child(2) {
+  opacity: 0;
+}
+#menu-toggle:not(:checked) + .menu-hamburguesa:hover span:nth-child(3),
+#menu-toggle:checked + .menu-hamburguesa span:nth-child(3) {
+  height: 4px;
+  background-color: #E5BC62;
+  transform: translateY(-10.5px) rotate(-45deg);
+  z-index: 1;
+}
+
+/* Subrayado animado */
+.nav-menu a {
+  position: relative;
+  padding-bottom: .5rem;
+  border-bottom: none;
+}
+.nav-menu ul li a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 20px;
+  right: 20px;
+  height: 5.5px;
+  background-image: url("./img/madera roja.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform .3s ease-in-out;
+}
+.nav-menu a:hover::after {
+  transform: scaleX(1);
+}
+
+.nombre-menu {
+  position: fixed;
+  left: 0;
+  padding: 0;
+  width: 100%;
+  margin-top: 170px;
+            /* ocupa todo el ancho de la pantalla */
+}
+
+.nav-menu .nombre-menu p {
+  display: block;                /* ocupa todo el ancho */
+
+  margin: 0;
+  padding: 0;
+
+  font-size: 38.5px;
+  line-height: 1; 
+  font-weight: bold;
+  width: 30%;    
+        /* ocupa todo el ancho de la pantalla */
+}
+
+.nav-menu .nombre-menu p {
+  /* Distribuye cada <span> equitativamente */
+  display: flex;
+  justify-content: space-between;
+  margin: 0;
+  padding: 0;
+}
+.nav-menu .nombre-menu p span {
+  flex: none;
+  background: url("./img/madera roja.png") no-repeat center center;
+  background-size: cover;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  /* Compatibilidad no WebKit */
+  background-clip: text;
+  color: transparent;
+  opacity: 0.57;
+}
+
+@media only screen and (min-width: 768px) {
+
+
+  
+  /* Logo centrado */
+  .nav-menu .logo-menu img {
+    width: 375px;
+  
+  }
+  
+  /* Cesta a la derecha con margen */
+  .nav-menu .cesta-menu {
+    position: absolute;
+    right: 25px;
+    margin-right: 40px;        /* margen derecho aumentado */
+  }
+  .nav-menu .cesta-menu img {
+    width: 100px;
+    
+  }
+  
+  /* Lista de enlaces */
+  .nav-menu ul {
+    padding-top: 70px;
+  
+  }
+  
+  .nav-menu li {
+    margin-bottom: 2rem;
+  }
+  .nav-menu a.texto-grande {
+    font-size: 50px;
+  }
+  
+  .nav-menu a.texto-pequeno {
+    font-size: 30px;
+  }
+  
+  
+  
+  /* Subrayado animado */
+  .nav-menu a {
+    position: relative;
+    padding-bottom: .5rem;
+    border-bottom: none;
+  }
+  
+  .nav-menu a:hover::after {
+    transform: scaleX(1);
+  }
+  
+  .nombre-menu {
+  
+    margin-top: 80px;
+              /* ocupa todo el ancho de la pantalla */
+  }
+  
+  .nav-menu .nombre-menu p {
+  
+  
+    font-size: 79px;
+  
+  }
+  
+  .nav-menu .nombre-menu p {
+    /* Distribuye cada <span> equitativamente */
+    display: flex;
+    justify-content: space-between;
+  
+  }
+  .main {
+    padding-top: 80px;
+  }
+  
+  }
+  @media only screen and (min-width: 1242px) {
+
+
+    /* Nav full-screen oculto arriba */
+    .nav-menu {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #faf5ef;
+      padding: 4rem 2rem;
+      transform: translateY(-100%);
+      transition: transform .7s ease-in-out;
+      z-index: 1000;
+      overflow-y: auto;
+    }
+    
+    /* Coloca logo + cesta al nivel de la cruz */
+    .nav-menu .menu-header {
+      position: absolute;
+      top: 7.5px;
+      left: 0px;
+      right: 25px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      z-index: 1001;
+    }
+    
+    /* Logo centrado */
+    .nav-menu .logo-menu img {
+      width: 400px;
+    
+    }
+    
+    /* Cesta a la derecha con margen */
+    .nav-menu .cesta-menu {
+      position: absolute;
+      right: 25px;
+      margin-right: 40px;        /* margen derecho aumentado */
+    }
+    .nav-menu .cesta-menu img {
+      width: 100px;
+      
+    }
+    
+    /* Lista de enlaces */
+    .nav-menu ul {
+      padding-top: 70px;
+    
+    }
+    
+    .nav-menu li {
+      margin-bottom: 2rem;
+    }
+    .nav-menu a.texto-grande {
+      font-size: 50px;
+    }
+    
+    .nav-menu a.texto-pequeno {
+      font-size: 30px;
+    }
+    
+    
+    
+    /* Subrayado animado */
+    .nav-menu a {
+      position: relative;
+      padding-bottom: .5rem;
+      border-bottom: none;
+    }
+    
+    .nav-menu a:hover::after {
+      transform: scaleX(1);
+    }
+    
+    .nombre-menu {
+    
+      margin-top: 40px;
+                /* ocupa todo el ancho de la pantalla */
+    }
+    
+    .nav-menu .nombre-menu p {
+    
+    
+      font-size: 128px;
+    
+    }
+    
+    .nav-menu .nombre-menu p {
+      /* Distribuye cada <span> equitativamente */
+      display: flex;
+      justify-content: space-between;
+    
+    }
+    .main {
+      padding-top: 80px;
+    }
+    
+    }
+
+    @media only screen and (min-width: 1880px) {
+
+
+      /* Nav full-screen oculto arriba */
+      .nav-menu {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #faf5ef;
+        padding: 4rem 2rem;
+        transform: translateY(-100%);
+        transition: transform .7s ease-in-out;
+        z-index: 1000;
+        overflow-y: auto;
+      }
+      
+      /* Coloca logo + cesta al nivel de la cruz */
+      .nav-menu .menu-header {
+        position: absolute;
+        top: 7.5px;
+        left: 0px;
+        right: 25px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+        z-index: 1001;
+      }
+      
+      /* Logo centrado */
+      .nav-menu .logo-menu img {
+        width: 400px;
+      
+      }
+      
+      /* Cesta a la derecha con margen */
+      .nav-menu .cesta-menu {
+        position: absolute;
+        right: 25px;
+        margin-right: 40px;        /* margen derecho aumentado */
+      }
+      .nav-menu .cesta-menu img {
+        width: 100px;
+        
+      }
+      
+      /* Lista de enlaces */
+      .nav-menu ul {
+        padding-top: 70px;
+      
+      }
+      
+      .nav-menu li {
+        margin-bottom: 2rem;
+      }
+      .nav-menu a.texto-grande {
+        font-size: 50px;
+      }
+      
+      .nav-menu a.texto-pequeno {
+        font-size: 30px;
+      }
+      
+      
+      
+      /* Subrayado animado */
+      .nav-menu a {
+        position: relative;
+        padding-bottom: .5rem;
+        border-bottom: none;
+      }
+      
+      .nav-menu a:hover::after {
+        transform: scaleX(1);
+      }
+      
+      .nombre-menu {
+      
+        margin-top: 65px;
+                  /* ocupa todo el ancho de la pantalla */
+      }
+      
+      .nav-menu .nombre-menu p {
+      
+      
+        font-size: 195px;
+      
+      }
+      
+      .nav-menu .nombre-menu p {
+        /* Distribuye cada <span> equitativamente */
+        display: flex;
+        justify-content: space-between;
+      
+      }
+      .main {
+        padding-top: 80px;
+      }
+      
+      }
 
  /* Ajustes para pantallas grandes */
 @media only screen and (min-width: 768px) {
@@ -244,7 +723,9 @@ header a {
   .contact-header h2 {
     color: rgb(164, 12, 12);
     font-size: 0.9rem;
-    margin-top: 130px;
+    margin-top: 30px;
+    animation: fadeInUp 1s ease-out forwards;
+    opacity: 0;
   }
   
   .contact-header h1 {
@@ -252,10 +733,20 @@ header a {
     font-size: 1.7rem;
     margin-bottom: 2rem;
   }
+
+  .texto1 {
+    animation: fadeInUp 1s ease-out forwards;
+    opacity: 0;
+  }
   .contact-header2 h2 {
     color: rgb(164, 12, 12);
     font-size: 0.9rem;
     margin-top: 50px;
+  }
+
+  .texto2 {
+    animation: fadeInUp 1.3s ease-out forwards;
+    opacity: 0;
   }
   
   .contact-header2 h1 {
@@ -270,6 +761,8 @@ header a {
     padding: 8px;
     margin-bottom: 2rem;
     overflow: hidden;
+    animation: fadeInUp 1.8s ease-out forwards;
+    opacity: 0;
   }
   
   
@@ -277,6 +770,7 @@ header a {
     background-color: #fdfaf6;
     border-radius: 17px;
     padding: 1.7rem;
+    
   }
   
   .contact-row {
@@ -357,6 +851,8 @@ header a {
     border-radius: 2rem;
     cursor: pointer;
     transition: all 0.3s ease;
+    animation: fadeInUp 1.8s ease-out forwards;
+    opacity: 0;
   }
   
   .send-button button:hover {
