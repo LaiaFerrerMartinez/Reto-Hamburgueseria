@@ -721,12 +721,16 @@ header a {
     color: rgb(180, 16, 16); ;
     font-size: 0.9rem;
     padding-top: 118px;
+    animation: fadeInUp 0.6s ease-out forwards;
+    opacity: 0; /* Importante para que empiece invisible */
   }
   
   .make-order-header h1 {
     font-size: 1.6rem;
     margin-bottom: 2rem;
     margin-top: -4px;
+    animation: fadeInUp 0.6s ease-out forwards;
+    opacity: 0; /* Importante para que empiece invisible */
   }
   
   .make-order-options {
@@ -744,6 +748,8 @@ header a {
     padding: 8px;
     border-radius: 20px;
     overflow: hidden;
+    
+   
   }
   
   .make-order-card {
@@ -755,18 +761,30 @@ header a {
     align-items: center;
     text-align: center;
     gap: 1rem;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    will-change: transform;
+    
   }
+  .make-order-card:hover {
+    transform: scale(0.993); /* crece sutilmente en todas direcciones */
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12); /* sombra suave */
+
+}
   
   .make-order-card h4 {
     color: rgb(180, 16, 16); ;
     font-size: 0.9rem;
     font-weight: bold;
+    animation: fadeInUp 0.8s ease-out forwards;
+    opacity: 0; /* Importante para que empiece invisible */ 
   }
   
   .make-order-card h3 {
     font-size: 1.6rem;
     font-weight: 800;
     margin-top: -24px;
+    animation: fadeInUp 0.8s ease-out forwards;
+    opacity: 0; /* Importante para que empiece invisible */
   }
   
   .make-order-card img {
@@ -774,7 +792,8 @@ header a {
     height: auto;
     margin-top: -20px;
     margin-bottom: 10px;
-    
+    animation: fadeInUp 0.6s ease-out forwards;
+    opacity: 0; /* Importante para que empiece invisible */
   }
   
   .btn {
@@ -787,11 +806,23 @@ header a {
     border-radius: 2rem;
     font-weight: bold;
     transition: all 0.3s ease;
+    animation: fadeInUp 0.8s ease-out forwards;
+  opacity: 0; /* Importante para que empiece invisible */
   }
   
   .btn:hover {
     transform: scale(1.03);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 0 1.1px rgb(0, 0, 0);
+  }
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 
   @media (min-width: 538px) and (max-width: 818px) {
