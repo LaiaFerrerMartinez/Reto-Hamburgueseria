@@ -171,7 +171,7 @@ header a {
 /* Coloca logo + cesta al nivel de la cruz */
 .nav-menu .menu-header {
   position: absolute;
-  top: 7.5px;
+  top: 10px;
   left: 0px;
   right: 25px;
   display: flex;
@@ -179,6 +179,7 @@ header a {
   justify-content: center;
   gap: 20px;
   z-index: 1001;
+  padding-top: 30px;
 }
 
 /* Logo centrado */
@@ -705,23 +706,27 @@ header a {
 
   .banner-overlay {
     position: absolute;
-    inset: 0;
+    top: 0px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  
     display: flex;
     align-items: center;
-    padding-top: 150px;
     justify-content: center;
-    z-index: 1;/* por encima del vídeo */
+    z-index: 2;
+  
+    background-image: url('./img/banner-video.gif');
+    background-repeat: no-repeat;
+    background-position: center center;
+    /* Mantiene el ancho automático para respetar la proporción,
+       y fija la altura al 120% del contenedor */
+    background-size: auto 140%;
+    margin-top: 180px;
   }
-  .banner-video {
-    position: absolute;
-    top: 150px;
-    left: 0;
-    width: 100%;
-    height: 89%;
-    object-fit:cover;    /* cubre todo el área sin distorsionar */
-    z-index: 0;           /* detrás de todo */
-    margin-top: 50px;
-  }
+  
+  
+  
   
   .banner-content {
     text-align: center;
@@ -802,14 +807,14 @@ header a {
     position: relative; /* importante */
     z-index: 1; /* menor que el banner */
     overflow: hidden;
-    margin-top: -110px;
+    margin-top: -250px;
     
   }
   
   .menu-header h2 {
     color: rgb(180, 16, 16);
     font-size: 0.9rem;
-    padding-top: 0px;
+    padding-top: 80px;
     animation: fadeInUp 0.7s ease-out forwards;
     opacity: 0; /* Importante para que empiece invisible */
   }
@@ -1978,5 +1983,108 @@ header a {
   @media only screen and (min-width: 1400px) {
     .banner-video {
       height: 75%;
+    }
+  }
+
+  
+  @media only screen and (min-width: 1024px) {
+    .banner-overlay {
+      position: absolute;
+      top: 20px;
+      right: 0;
+      bottom: 0;
+      left: 0;
+    
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2;
+    
+      background-image: url('./img/banner-video.gif');
+      background-repeat: no-repeat;
+      background-position: center center;
+      /* Mantiene el ancho automático para respetar la proporción,
+         y fija la altura al 120% del contenedor */
+      background-size: 100% auto;
+    }
+    
+    /* Sección de menu */  
+    .menu-section {
+      background: url('./img/fondo_pag derecha.jpg');
+      font-family: Georgia, serif;
+      padding: 0 2rem 2rem;
+      padding-bottom: 60px;
+      color: black;
+      position: relative; /* importante */
+      z-index: 1; /* menor que el banner */
+      overflow: hidden;
+      margin-top: -350px;
+      padding-left: 128px;
+    }
+    
+    .menu-header h2 {
+      color: rgb(180, 16, 16);
+      font-size: 0.9rem;
+      padding-top: 170px;
+      animation: fadeInUp 0.7s ease-out forwards;
+      opacity: 0; /* Importante para que empiece invisible */
+    }
+  }
+  @media only screen and (min-width: 1461px) {
+    .banner-overlay {
+      position: absolute;
+      top: 20px;
+      right: 0;
+      bottom: 0;
+      left: 0;
+    
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2;
+    
+      background-image: url('./img/banner-video.gif');
+      background-repeat: no-repeat;
+      background-position: center center;
+      /* Mantiene el ancho automático para respetar la proporción,
+         y fija la altura al 120% del contenedor */
+      background-size: 100% auto;
+    }
+
+    
+    
+    /* Sección de menu */  
+    .menu-section {
+      background: url('./img/fondo_pag derecha.jpg');
+      font-family: Georgia, serif;
+      padding: 0 2rem 2rem;
+      padding-bottom: 60px;
+      color: black;
+      position: relative; /* importante */
+      z-index: 1; /* menor que el banner */
+      overflow: hidden;
+      margin-top: -350px;
+      padding-left: 128px;
+    }
+    
+    .menu-header h2 {
+      color: rgb(180, 16, 16);
+      font-size: 0.9rem;
+      padding-top: 200px;
+      animation: fadeInUp 0.7s ease-out forwards;
+      opacity: 0; /* Importante para que empiece invisible */
+    }
+  }
+
+ 
+
+  @media only screen and (min-width: 1629px) {
+    
+    .menu-header h2 {
+      color: rgb(180, 16, 16);
+      font-size: 0.9rem;
+      padding-top: 240px;
+      animation: fadeInUp 0.7s ease-out forwards;
+      opacity: 0; /* Importante para que empiece invisible */
     }
   }
