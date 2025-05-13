@@ -39,10 +39,12 @@ body, html {
 
 /* ==== PANEL DERECHO === */
 .right-panel {
-    background-image: url('./contenido/fondo_pag derecha.jpg');
+    background-image: url('./contenido/fondo\ dcha.jpg');
     flex-direction: column;
     height: 60vh;
 }
+/* En su lugar, aplica el fondo al .container */
+
 
 /* ==== CONTENIDO DEL PANEL IZQUIERDO === */
 .logo-content {
@@ -59,13 +61,14 @@ body, html {
 
 /* ==== FORMULARIO LOGIN ==== */
 .right-panel h2 {
-    font-size: 21px;
+    font-size: 30px;
     margin-top: 0px;
-    margin-bottom: 15px;
-    color: rgb(0, 0, 0);
+    margin-bottom: 0px;
+    color: rgb(255, 255, 255);
     text-shadow: 1px 1px 1px black;
     animation: fadeInUp 0.75s ease-out forwards;
     opacity: 0; /* Importante para que empiece invisible */ 
+    text-align: center;
 }
 
 .login-form {
@@ -76,11 +79,11 @@ body, html {
     border-radius: 10px; /* Menor border-radius */
     width: 70%; /* Reducir el width a un 70% */
     display: flex;
-    height: 320px;
+    height: 340px;
     flex-direction: column;
     border: 1px solid rgba(255, 255, 255, 0.7); /* Borde más fino */
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.4); /* Menor sombra */
     margin-bottom: 12px; /* Menor margin-bottom */
-    box-shadow: 0 0 0 1.1px rgb(0, 0, 0);
 }
 
 .login-form label {
@@ -88,7 +91,7 @@ body, html {
     margin-top: 10px; /* Menor margen en los labels */
     font-size: 13px; /* Font-size aún más pequeño */
     animation: fadeInUp 0.9s ease-out forwards;
-    opacity: 0; /* Importante para que empiece invisible */ 
+    opacity: 0; /* Importante para que empiece invisible */
 }
 
 .login-form input {
@@ -114,7 +117,7 @@ body, html {
     cursor: pointer;
     transition: background-color 0.3s;
     animation: fadeInUp 1.2s ease-out forwards;
-    opacity: 0; /* Importante para que empiece invisible */ 
+    opacity: 0; /* Importante para que empiece invisible */
 }
 
 .login-form button:hover {
@@ -137,6 +140,7 @@ body, html {
 .register-link a:hover {
     text-decoration: underline;
 }
+
 @keyframes fadeInUp {
     from {
       opacity: 0;
@@ -183,7 +187,7 @@ body, html {
         max-width: 90%;
         margin-top: 10px;
         margin-bottom: 0;
-        height: 425px;
+        height: 460px;
         border-radius: 22px;
         border: 2.5px solid rgba(0, 0, 0, 0.7); /* Borde más fino */
         box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.4); /* Menor sombra */

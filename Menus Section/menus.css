@@ -1,3 +1,15 @@
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
 body {
   margin: 0;
   padding: 0;
@@ -171,7 +183,7 @@ header a {
 /* Coloca logo + cesta al nivel de la cruz */
 .nav-menu .menu-header {
   position: absolute;
-  top: 10px;
+  top: 7.5px;
   left: 0px;
   right: 25px;
   display: flex;
@@ -179,7 +191,6 @@ header a {
   justify-content: center;
   gap: 20px;
   z-index: 1001;
-  padding-top: 30px;
 }
 
 /* Logo centrado */
@@ -594,105 +605,108 @@ header a {
       }
       
       }
-   /* Ajustes para pantallas grandes */
-  @media only screen and (min-width: 768px) {
-      header {
-          padding-top: 20px;
-          height: 80px;
-          justify-content: center; /* Centra los elementos horizontalmente */
-      }
-  
-      .menu-hamburguesa {
-          position: absolute;
-          left: 25px; /* Ajusta la posición del menú hamburguesa */
-          top: 35px;
-      }
-  
-      .logo img {
-          width: 300px; /* Ajusta el tamaño del logo */
-          height: auto;
-          margin-top: 25px;
-      }
-  
-      .textos-header {
-          font-size: 12px; /* Ajusta el tamaño de los textos */
-          top: 15px;
-      }
-  
-      .cesta, .perfil {
-          font-size: 15px; /* Aumenta el tamaño de la fuente */
-      }
-  
-      .special-offers, .make-your-order {
-          font-size: 15px;
-      }
-  
-      .special-offers {
-          margin-left: 300px; /* Ajusta el margen para la sección de "special offers" */
-      }
-  
-      .make-your-order {
-          bottom: 100px;
-          margin-right: 350px; /* Ajusta el margen para la sección de "make your order" */
-      }
-  
-      .iconos-derecha {
-          margin-right: 100px;
-          top: 25px;
-      }
-  
-      .textos-header {
-        pointer-events: none;
-      }
-      
-      .textos-header a {
-        pointer-events: auto;
-      }
-      
-  }
-  
-  @media only screen and (min-width: 890px) and (max-width: 1241px) {
-      .special-offers {
-          margin-left: 150px; /* Ajusta el margen para la sección de "special offers" */
-      }
-  
-      .make-your-order {
-          margin-right: 200px; /* Ajusta el margen para la sección de "make your order" */
-      }
-  
-      .iconos-derecha {
-          margin-right: 50px;
-      }
-  }
-  
-  
-  
-  @media only screen and (min-width: 769px) and (max-width: 889px) {
-      .special-offers {
-          margin-left: 50px; /* Ajusta el margen para la sección de "special offers" */
-      }
-  
-      .make-your-order {
-          margin-right: 170px; /* Ajusta el margen para la sección de "make your order" */
-      }
-  
-      .iconos-derecha {
-          margin-right: 50px;
-      }
-  }
-  @media only screen and (min-width: 1400px) {
-    .menu-hamburguesa {
-      left: 50px; /* Ajusta la posición del menú hamburguesa */
+ /* Ajustes para pantallas grandes */
+@media only screen and (min-width: 768px) {
+    header {
+        padding-top: 20px;
+        height: 80px;
+        justify-content: center; /* Centra los elementos horizontalmente */
+        
     }
+    main {
+      padding-top: 80px; /* o lo que mida el header fijo */
+    }
+
+    .menu-hamburguesa {
+        position: absolute;
+        left: 25px; /* Ajusta la posición del menú hamburguesa */
+        top: 35px;
+    }
+
+    .logo img {
+        width: 300px; /* Ajusta el tamaño del logo */
+        height: auto;
+        margin-top: 25px;
+    }
+
+    .textos-header {
+        font-size: 12px; /* Ajusta el tamaño de los textos */
+        top: 15px;
+    }
+
+    .cesta, .perfil {
+        font-size: 15px; /* Aumenta el tamaño de la fuente */
+    }
+
+    .special-offers, .make-your-order {
+        font-size: 15px;
+    }
+
+    .special-offers {
+        margin-left: 300px; /* Ajusta el margen para la sección de "special offers" */
+    }
+
+    .make-your-order {
+        bottom: 100px;
+        margin-right: 350px; /* Ajusta el margen para la sección de "make your order" */
+    }
+
     .iconos-derecha {
-      margin-right: 50px;
-      gap: 20px;
-    } 
-    .iconos-derecha img {
-      width: 56px;
+        margin-right: 100px;
+        top: 25px;
+    }
+
+    .textos-header {
+      pointer-events: none;
     }
     
+    .textos-header a {
+      pointer-events: auto;
+    }
+    
+}
+
+@media only screen and (min-width: 890px) and (max-width: 1241px) {
+    .special-offers {
+        margin-left: 150px; /* Ajusta el margen para la sección de "special offers" */
+    }
+
+    .make-your-order {
+        margin-right: 200px; /* Ajusta el margen para la sección de "make your order" */
+    }
+
+    .iconos-derecha {
+        margin-right: 50px;
+    }
+}
+
+
+
+@media only screen and (min-width: 769px) and (max-width: 889px) {
+    .special-offers {
+        margin-left: 50px; /* Ajusta el margen para la sección de "special offers" */
+    }
+
+    .make-your-order {
+        margin-right: 170px; /* Ajusta el margen para la sección de "make your order" */
+    }
+
+    .iconos-derecha {
+        margin-right: 50px;
+    }
+}
+@media only screen and (min-width: 1400px) {
+  .menu-hamburguesa {
+    left: 50px; /* Ajusta la posición del menú hamburguesa */
   }
+  .iconos-derecha {
+    margin-right: 50px;
+    gap: 20px;
+  } 
+  .iconos-derecha img {
+    width: 56px;
+  }
+}
   .menu-banner {
     top:-102px;
     padding-bottom: 0px;

@@ -9,12 +9,13 @@
   }
 }
 
+
 body {
   margin: 0;
   padding: 0;
   font-family: Georgia, serif;
   width: 100%;
-} 
+}
 
 /* Header principal */
 header {
@@ -86,14 +87,6 @@ header a {
   padding: 0 20px;
   bottom: 20px;
   z-index: 1;
-}
-.texto1 {
-  animation: fadeInUp 1s ease-out forwards;
-  opacity: 0;
-}
-.texto2 {
-  animation: fadeInUp 1.3s ease-out forwards;
-  opacity: 0;
 }
 
 /* Botones de texto */
@@ -618,6 +611,10 @@ header a {
         padding-top: 20px;
         height: 80px;
         justify-content: center; /* Centra los elementos horizontalmente */
+        
+    }
+    main {
+      padding-top: 80px; /* o lo que mida el header fijo */
     }
 
     .menu-hamburguesa {

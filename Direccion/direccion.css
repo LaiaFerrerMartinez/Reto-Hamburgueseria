@@ -605,13 +605,16 @@ header a {
       }
       
       }
-
  /* Ajustes para pantallas grandes */
 @media only screen and (min-width: 768px) {
     header {
         padding-top: 20px;
         height: 80px;
         justify-content: center; /* Centra los elementos horizontalmente */
+        
+    }
+    main {
+      padding-top: 80px; /* o lo que mida el header fijo */
     }
 
     .menu-hamburguesa {
