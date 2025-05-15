@@ -1,8 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // 1) Referencias a DOM
-  const container = document.querySelector('.cards-container');
-  const lowBtn    = document.getElementById('low-price');
-  const highBtn   = document.getElementById('high-price');
+  // 1) Referencias al DOM
+  const container   = document.querySelector('.cards-container');
+  const lowBtn      = document.getElementById('low-price');
+  const highBtn     = document.getElementById('high-price');
+  const searchInput = document.querySelector('.buscador input');
 
   // 2) Array donde guardamos los productos “dessert”
   let productos = [];
@@ -17,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
     return resp.json();
   }
 
-  // 4) Renderiza un array en el contenedor
+  // 4) Renderiza un array en el contenedor, incluyendo overlay de descripción
   function renderProducts(arr) {
     container.innerHTML = '';
     arr.forEach(prod => {
@@ -38,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 5) Carga inicial SIN ordenar
+  // 5) Inicializar: carga sin ordenar
   async function initialLoad() {
     try {
       productos = await fetchProducts(null);
@@ -49,21 +50,37 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // 6) Recarga CON orden al hacer click
-  async function reloadWithSort(sort) {
-    try {
-      // Vuelves a pedir al back con sort
-      productos = await fetchProducts(sort);
-      renderProducts(productos);
-    } catch (err) {
-      console.error('Error al ordenar desserts:', err);
+  // 6) Filtra y ordena, luego renderiza
+  function filterSortRender(sort) {
+    const term = searchInput.value.trim().toLowerCase();
+    let arr = productos.slice();
+
+    // filtro por nombre o descripción
+    if (term) {
+      arr = arr.filter(p => {
+        const name = p.nombre.toLowerCase();
+        const desc = (p.descripcion || p.descripcion_producto || '').toLowerCase();
+        return name.includes(term) || desc.includes(term);
+      });
     }
+
+    // orden si se pide
+    if (sort) {
+      arr.sort((a, b) => {
+        const na = parseFloat(a.precioValor ?? a.precioFormateado.replace(',', '.'));
+        const nb = parseFloat(b.precioValor ?? b.precioFormateado.replace(',', '.'));
+        return sort === 'asc' ? na - nb : nb - na;
+      });
+    }
+
+    renderProducts(arr);
   }
 
-  // 7) Enlazamos botones
-  lowBtn.addEventListener('click',  () => reloadWithSort('asc'));
-  highBtn.addEventListener('click', () => reloadWithSort('desc'));
+  // 7) Enlazamos eventos
+  lowBtn.addEventListener('click',  () => filterSortRender('asc'));
+  highBtn.addEventListener('click', () => filterSortRender('desc'));
+  searchInput.addEventListener('input', () => filterSortRender(null));
 
-  // 8) Ejecutamos carga inicial
+  // 8) Ejecutamos la carga inicial
   initialLoad();
 });

@@ -1603,7 +1603,7 @@ header a {
   }
 
   .card-content img {
-      width: 120px; /* más grande */
+      width: 150px; /* más grande */
       height: auto;
       display: block;
       margin: 10px auto; /* centrada con más espacio */
@@ -1663,7 +1663,7 @@ header a {
   }
 
   .card-content img {
-      width: 140px; /* más grande */
+      width: 160px; /* más grande */
       height: auto;
       display: block;
       margin: 10px auto; /* centrada con más espacio */
@@ -1720,7 +1720,7 @@ header a {
   }
 
   .card-content img {
-      width: 150px; /* más grande */
+      width: 200px; /* más grande */
       height: auto;
       display: block;
       margin: 10px auto; /* centrada con más espacio */
@@ -1738,3 +1738,53 @@ header a {
   
 }
   
+.card,
+.card-inf {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Oscurecer solo la zona .card-content al hover */
+.card-content:hover {
+  filter: brightness(50%);
+}
+
+/* Overlay cubre toda la tarjeta, oculto por defecto */
+.card .overlay,
+.card-inf .overlay {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1em;
+  box-sizing: border-box;
+
+  background: rgba(0,0,0,0.6);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;  /* para que el overlay no bloquee el hover de card-content */
+}
+
+/* Mostrar overlay cuando la zona .card-content esté en hover */
+.card-content:hover ~ .overlay {
+  opacity: 1;
+}
+
+/* Texto en blanco respetando saltos, con más espacio */
+.card .overlay p,
+.card-inf .overlay p {
+  color: #fff;
+  background: none;
+  white-space: pre-wrap;
+  word-break: break-word;
+  text-align: center;
+
+  /* Aumenta la altura entre líneas */
+  line-height: 1.6;
+
+  /* Si tienes bloques de texto separados por dobles saltos, añade margen */
+  margin: 1em 0;
+}
+

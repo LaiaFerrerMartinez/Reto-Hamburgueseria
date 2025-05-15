@@ -1,13 +1,14 @@
 document.addEventListener('DOMContentLoaded', () => {
   // 1) Referencias al DOM
-  const container = document.querySelector('.cards-container');
-  const lowBtn    = document.getElementById('low-price');
-  const highBtn   = document.getElementById('high-price');
+  const container   = document.querySelector('.cards-container');
+  const lowBtn      = document.getElementById('low-price');
+  const highBtn     = document.getElementById('high-price');
+  const searchInput = document.querySelector('.buscador input');
 
   // 2) Array donde guardamos los productos “healthy”
   let productos = [];
 
-  // 3) Fetch genérico al back, con sort opcional
+  // 3) Fetch genérico al backend, con sort opcional
   async function fetchProducts(sort) {
     const url = new URL('http://localhost:8080/TestControllerPostgre/api/products');
     url.searchParams.set('type', 'healthy');
@@ -17,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
     return resp.json();
   }
 
-  // 4) Renderiza un array de productos en el contenedor
+  // 4) Renderiza un array de productos en el contenedor, incluyendo overlay
   function renderProducts(arr) {
     container.innerHTML = '';
     arr.forEach(prod => {
@@ -32,6 +33,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 <button onclick="addToCart(${prod.id})">I WANT IT!</button>
               </div>
             </div>
+          </div>
+          <div class="overlay">
+            <p>${prod.descripcion || prod.desc || prod.descripcion_producto}</p>
           </div>
         </div>
       `);
@@ -53,16 +57,28 @@ document.addEventListener('DOMContentLoaded', () => {
   async function reloadWithSort(sort) {
     try {
       productos = await fetchProducts(sort);
-      renderProducts(productos);
+      applyFilterAndRender();
     } catch (err) {
       console.error('Error al ordenar healthy:', err);
     }
   }
 
-  // 7) Enlazamos botones Low/High
+  // 7) Filtrado por búsqueda + render
+  function applyFilterAndRender() {
+    const term = searchInput.value.trim().toLowerCase();
+    const filtered = productos.filter(p => {
+      const name = p.nombre.toLowerCase();
+      const desc = (p.descripcion || p.desc || p.descripcion_producto || '').toLowerCase();
+      return name.includes(term) || desc.includes(term);
+    });
+    renderProducts(filtered);
+  }
+
+  // 8) Enlazamos eventos
   lowBtn.addEventListener('click',  () => reloadWithSort('asc'));
   highBtn.addEventListener('click', () => reloadWithSort('desc'));
+  searchInput.addEventListener('input', applyFilterAndRender);
 
-  // 8) Ejecutamos la carga inicial
+  // 9) Ejecutamos la carga inicial
   initialLoad();
 });

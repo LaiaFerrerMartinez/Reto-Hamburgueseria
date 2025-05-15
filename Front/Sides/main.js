@@ -1,13 +1,14 @@
 document.addEventListener('DOMContentLoaded', () => {
   // 1) Referencias al DOM
-  const container = document.querySelector('.cards-container');
-  const lowBtn    = document.getElementById('low-price');
-  const highBtn   = document.getElementById('high-price');
+  const container   = document.querySelector('.cards-container');
+  const lowBtn      = document.getElementById('low-price');
+  const highBtn     = document.getElementById('high-price');
+  const searchInput = document.querySelector('.buscador input');
 
   // 2) Array donde guardamos los productos “side”
   let productos = [];
 
-  // 3) Fetch genérico al back, con sort opcional
+  // 3) Fetch genérico al backend, con sort opcional
   async function fetchProducts(sort) {
     const url = new URL('http://localhost:8080/TestControllerPostgre/api/products');
     url.searchParams.set('type', 'side');
@@ -17,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
     return resp.json();
   }
 
-  // 4) Renderiza un array de productos en el contenedor
+  // 4) Renderiza un array de productos en el contenedor, incluyendo overlay de descripción
   function renderProducts(arr) {
     container.innerHTML = '';
     arr.forEach(prod => {
@@ -38,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 5) Carga inicial SIN ordenar
+  // 5) Inicializar: carga sin ordenar
   async function initialLoad() {
     try {
       productos = await fetchProducts(null);
@@ -49,20 +50,37 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // 6) Recarga CON orden al hacer click
-  async function reloadWithSort(sort) {
-    try {
-      productos = await fetchProducts(sort);
-      renderProducts(productos);
-    } catch (err) {
-      console.error('Error al ordenar sides:', err);
+  // 6) Filtra por búsqueda y ordena, luego renderiza
+  function filterSortRender(sort) {
+    const term = searchInput.value.trim().toLowerCase();
+    let arr = productos.slice();
+
+    // filtro por nombre o descripción
+    if (term) {
+      arr = arr.filter(p => {
+        const name = p.nombre.toLowerCase();
+        const desc = (p.desc || '').toLowerCase();
+        return name.includes(term) || desc.includes(term);
+      });
     }
+
+    // orden si se pide
+    if (sort) {
+      arr.sort((a, b) => {
+        const na = parseFloat((a.precioValor ?? a.precioFormateado).toString().replace(',', '.'));
+        const nb = parseFloat((b.precioValor ?? b.precioFormateado).toString().replace(',', '.'));
+        return sort === 'asc' ? na - nb : nb - na;
+      });
+    }
+
+    renderProducts(arr);
   }
 
-  // 7) Enlazamos botones Low/High
-  lowBtn.addEventListener('click',  () => reloadWithSort('asc'));
-  highBtn.addEventListener('click', () => reloadWithSort('desc'));
+  // 7) Enlazamos eventos
+  lowBtn.addEventListener('click',  () => filterSortRender('asc'));
+  highBtn.addEventListener('click', () => filterSortRender('desc'));
+  searchInput.addEventListener('input', () => filterSortRender(null));
 
-  // 8) Ejecutamos la carga inicial
+  // 8) Ejecutar carga inicial
   initialLoad();
 });

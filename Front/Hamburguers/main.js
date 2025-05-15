@@ -7,45 +7,50 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   const menuContainer    = containers[0];
   const menuInfContainer = containers[1];
-  const lowBtn  = document.getElementById('low-price');
-  const highBtn = document.getElementById('high-price');
+  const lowBtn           = document.getElementById('low-price');
+  const highBtn          = document.getElementById('high-price');
+  const searchInput      = document.querySelector('.buscador input');
 
-  // Arrays para guardar los productos
+  // 1) Arrays para guardar los datos brutos
   let productsMenu    = [];
   let productsMenuInf = [];
 
-  // Función para renderizar
+  // 2) Renderizado con overlay de descripción
   function renderProducts(container, products, cardClass) {
     container.innerHTML = '';
     products.forEach(prod => {
-      const card = document.createElement('div');
-      card.className = cardClass;
-      card.innerHTML = `
-        <div class="card-content">
-          <img src="${prod.img}" alt="${prod.nombre}">
-          <div class="texto-card">
-            <div class="titulo-card"><p>${prod.nombre}</p></div>
-            <div class="footer-card">
-              <p>${prod.precioFormateado}$</p>
-              <button onclick="addToCart(${prod.id})">I WANT IT!</button>
+      container.insertAdjacentHTML('beforeend', `
+        <div class="${cardClass}">
+          <div class="card-content">
+            <img src="${prod.img}" alt="${prod.nombre}">
+            <div class="texto-card">
+              <div class="titulo-card"><p>${prod.nombre}</p></div>
+              <div class="footer-card">
+                <p>${prod.precioFormateado}$</p>
+                <button onclick="addToCart(${prod.id})">I WANT IT!</button>
+              </div>
             </div>
           </div>
+          <div class="overlay">
+            <p>${prod.desc}</p>
+          </div>
         </div>
-      `;
-      container.appendChild(card);
+      `);
     });
   }
 
-  // Carga inicial sin ordenar
+  // 3) Carga inicial de ambos tipos
   try {
-    const respMenu    = await fetch('http://localhost:8080/TestControllerPostgre/api/products?type=burger');
-    const respMenuInf = await fetch('http://localhost:8080/TestControllerPostgre/api/products?type=burger-veg');
+    const [respMenu, respMenuInf] = await Promise.all([
+      fetch('http://localhost:8080/TestControllerPostgre/api/products?type=burger'),
+      fetch('http://localhost:8080/TestControllerPostgre/api/products?type=burger-veg')
+    ]);
     if (!respMenu.ok || !respMenuInf.ok) throw new Error('HTTP ' + (respMenu.status || respMenuInf.status));
 
     productsMenu    = await respMenu.json();
     productsMenuInf = await respMenuInf.json();
 
-    renderProducts(menuContainer, productsMenu,    'card');
+    renderProducts(menuContainer,    productsMenu,    'card');
     renderProducts(menuInfContainer, productsMenuInf, 'card-inf');
   } catch (err) {
     console.error('Error cargando productos:', err);
@@ -53,22 +58,43 @@ document.addEventListener('DOMContentLoaded', async () => {
     return;
   }
 
-  // Comparador numérico (convierte string con punto o coma a número)
+  // 4) Comparador numérico que admite punto o coma
   const cmpPrecio = (a, b) => {
-    const na = parseFloat(a.precio.replace(',', '.'));
-    const nb = parseFloat(b.precio.replace(',', '.'));
+    const na = parseFloat((a.precioValor ?? a.precioFormateado).toString().replace(',', '.'));
+    const nb = parseFloat((b.precioValor ?? b.precioFormateado).toString().replace(',', '.'));
     return na - nb;
   };
 
-  // Orden ascendente
-  lowBtn.addEventListener('click', () => {
-    renderProducts(menuContainer,    [...productsMenu].sort(cmpPrecio),        'card');
-    renderProducts(menuInfContainer, [...productsMenuInf].sort(cmpPrecio),     'card-inf');
-  });
+  // 5) Función que aplica filtro de búsqueda y orden, y renderiza
+  function filterSortRender(sort) {
+    const term = searchInput.value.trim().toLowerCase();
 
-  // Orden descendente
-  highBtn.addEventListener('click', () => {
-    renderProducts(menuContainer,    [...productsMenu].sort((a, b) => cmpPrecio(b, a)),        'card');
-    renderProducts(menuInfContainer, [...productsMenuInf].sort((a, b) => cmpPrecio(b, a)),     'card-inf');
-  });
+    // Generamos las dos listas filtradas y ordenadas
+    [ { data: productsMenu,    container: menuContainer,    cls: 'card'     },
+      { data: productsMenuInf, container: menuInfContainer, cls: 'card-inf' }]
+      .forEach(({ data, container, cls }) => {
+        let arr = data.slice();
+
+        // Filtro por nombre o descripción
+        if (term) {
+          arr = arr.filter(p => {
+            const name = p.nombre.toLowerCase();
+            const desc = (p.desc || '').toLowerCase();
+            return name.includes(term) || desc.includes(term);
+          });
+        }
+
+        // Orden si se pide
+        if (sort) {
+          arr.sort((a, b) => sort === 'asc' ? cmpPrecio(a, b) : cmpPrecio(b, a));
+        }
+
+        renderProducts(container, arr, cls);
+      });
+  }
+
+  // 6) Enlazamos eventos
+  lowBtn.addEventListener('click',  () => filterSortRender('asc'));
+  highBtn.addEventListener('click', () => filterSortRender('desc'));
+  searchInput.addEventListener('input', () => filterSortRender(null));
 });
