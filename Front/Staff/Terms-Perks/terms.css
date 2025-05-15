@@ -1,0 +1,1464 @@
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Georgia, serif;
+  width: 100%;
+}
+
+/* Header principal */
+header {
+  background-color: #000;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 110px;
+  padding: 0 10px;
+  width: 100%;
+  position: fixed;
+  z-index: 1000;
+  overflow: hidden;
+  padding-left: 0;
+}
+main {
+  padding-top: 110px;
+}
+
+/* Enlaces genéricos */
+header a {
+  text-decoration: none;
+  color: inherit;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Logo del header */
+.logo img {
+  width: 200px;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+/* Iconos a la derecha */
+.iconos-derecha {
+  position: absolute;
+  top: 10px;
+  right: 25px;
+  display: flex;
+  align-items: center;
+}
+.iconos-derecha a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+}
+.iconos-derecha img {
+  width: 40px;
+  height: auto;
+  object-fit: cover;
+}
+
+/* Textos bajo el header */
+.textos-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  font-size: 10px;
+  position: absolute;
+  top: 70px;
+  left: 0;
+  padding: 0 20px;
+  bottom: 20px;
+  z-index: 1;
+}
+
+/* Botones de texto */
+.special-offers,
+.make-your-order {
+  white-space: nowrap;
+  padding: 7.5px 10px;
+  border-radius: 10px;
+  border: 1px solid #fff;
+}
+.special-offers {
+  margin-left: 28px;
+  font-size: 10px;
+}
+.make-your-order {
+  margin-left: auto;
+  margin-right: 60px;
+  font-size: 10px;
+}
+.special-offers:hover,
+.make-your-order:hover {
+  background-color: #fff;
+  color: #000;
+  transition: all 0.45s ease;
+}
+
+/* Hover en iconos */
+.cesta:hover img,
+.perfil:hover img {
+  filter: brightness(0) invert(1);
+}
+
+/* Menú hamburguesa */
+.menu-hamburguesa {
+  position: absolute;
+  top: 25px;
+  left: 25px;
+  width: 35px;            /* ancho inicial */
+  height: 40px;           /* altura para área clicable */
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  cursor: pointer;
+  z-index: 1001;
+  transition: width .3s ease-in-out;
+}
+/* Al hover y checked: ancho ampliado y baja la cruz */
+.menu-hamburguesa:hover,
+#menu-toggle:checked + .menu-hamburguesa {
+  width: 60px;            /* ancho ampliado en hover/checked */
+  top: 30px;              /* baja la cruz solo en hover y checked */
+}
+.menu-hamburguesa span {
+  display: block;
+  height: 1.5px;
+  width: 100%;
+  background-color: #fff;
+  border-radius: 2px;
+  pointer-events: none;
+  transition: transform .3s, opacity .3s, background-color .3s, height .3s;
+  transform-origin: center;
+}
+.menu-hamburguesa:hover,
+#menu-toggle:checked + .menu-hamburguesa {
+  width: 60px;              /* ancho ampliado solo en hover y checked */
+}
+
+.menu-hamburguesa span {
+  display: block;
+  height: 1.5px;
+  width: 100%;
+  background-color: #fff;
+  border-radius: 2px;
+  pointer-events: none;
+  transition: transform .3s, opacity .3s, background-color .3s, height .3s;
+  transform-origin: center;
+}
+
+/* Nav full-screen oculto arriba */
+.nav-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #faf5ef;
+  padding: 4rem 2rem;
+  transform: translateY(-100%);
+  transition: transform .7s ease-in-out;
+  z-index: 1000;
+  overflow-y: auto;
+}
+
+/* Coloca logo + cesta al nivel de la cruz */
+.nav-menu .menu-header {
+  position: absolute;
+  top: 7.5px;
+  left: 0px;
+  right: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  z-index: 1001;
+}
+
+/* Logo centrado */
+.nav-menu .logo-menu img {
+  width: 237px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+/* Cesta a la derecha con margen */
+.nav-menu .cesta-menu {
+  position: absolute;
+  right: 25px;
+  margin-right: 15px;        /* margen derecho aumentado */
+}
+.nav-menu .cesta-menu img {
+  width: 70px;
+  height: auto;
+  display: block;
+}
+
+/* Lista de enlaces */
+.nav-menu ul {
+  padding-top: 50px;
+  list-style: none;
+  padding-left: 25px;
+  margin: 0;
+}
+.nav-menu li {
+  margin-bottom: 1rem;
+}
+.nav-menu a {
+  display: inline-block;
+  text-decoration: none;
+  font-family: 'Roboto Slab', serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #000;
+  border-bottom: 2px solid transparent;
+  padding-bottom: .2rem;
+  transition: border-color .2s;
+}
+
+.nav-menu a.texto-grande {
+  font-size: 27px;
+}
+
+.nav-menu a.texto-pequeno {
+  font-size: 20px;
+}
+
+/* Abrir menú */
+#menu-toggle:checked + .menu-hamburguesa + .nav-menu,
+.menu-hamburguesa:hover + .nav-menu {
+  transform: translateY(0);
+}
+
+/* Transformación a X */
+#menu-toggle:not(:checked) + .menu-hamburguesa:hover span:nth-child(1),
+#menu-toggle:checked + .menu-hamburguesa span:nth-child(1) {
+  height: 4px;
+  background-color: #5E442C;
+  transform: translateY(10.5px) rotate(45deg);
+  z-index: 2;
+}
+#menu-toggle:not(:checked) + .menu-hamburguesa:hover span:nth-child(2),
+#menu-toggle:checked + .menu-hamburguesa span:nth-child(2) {
+  opacity: 0;
+}
+#menu-toggle:not(:checked) + .menu-hamburguesa:hover span:nth-child(3),
+#menu-toggle:checked + .menu-hamburguesa span:nth-child(3) {
+  height: 4px;
+  background-color: #E5BC62;
+  transform: translateY(-10.5px) rotate(-45deg);
+  z-index: 1;
+}
+
+/* Subrayado animado */
+.nav-menu a {
+  position: relative;
+  padding-bottom: .5rem;
+  border-bottom: none;
+}
+.nav-menu ul li a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 20px;
+  right: 20px;
+  height: 5.5px;
+  background-image: url("./img/madera roja.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform .3s ease-in-out;
+}
+.nav-menu a:hover::after {
+  transform: scaleX(1);
+}
+
+.nombre-menu {
+  position: fixed;
+  left: 0;
+  padding: 0;
+  width: 100%;
+  margin-top: 170px;
+            /* ocupa todo el ancho de la pantalla */
+}
+
+.nav-menu .nombre-menu p {
+  display: block;                /* ocupa todo el ancho */
+
+  margin: 0;
+  padding: 0;
+
+  font-size: 38.5px;
+  line-height: 1; 
+  font-weight: bold;
+  width: 30%;    
+        /* ocupa todo el ancho de la pantalla */
+}
+
+.nav-menu .nombre-menu p {
+  /* Distribuye cada <span> equitativamente */
+  display: flex;
+  justify-content: space-between;
+  margin: 0;
+  padding: 0;
+}
+.nav-menu .nombre-menu p span {
+  flex: none;
+  background: url("./img/madera roja.png") no-repeat center center;
+  background-size: cover;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  /* Compatibilidad no WebKit */
+  background-clip: text;
+  color: transparent;
+  opacity: 0.57;
+}
+
+@media only screen and (min-width: 768px) {
+
+
+  
+  /* Logo centrado */
+  .nav-menu .logo-menu img {
+    width: 375px;
+  
+  }
+  
+  /* Cesta a la derecha con margen */
+  .nav-menu .cesta-menu {
+    position: absolute;
+    right: 25px;
+    margin-right: 40px;        /* margen derecho aumentado */
+  }
+  .nav-menu .cesta-menu img {
+    width: 100px;
+    
+  }
+  
+  /* Lista de enlaces */
+  .nav-menu ul {
+    padding-top: 70px;
+  
+  }
+  
+  .nav-menu li {
+    margin-bottom: 2rem;
+  }
+  .nav-menu a.texto-grande {
+    font-size: 50px;
+  }
+  
+  .nav-menu a.texto-pequeno {
+    font-size: 30px;
+  }
+  
+  
+  
+  /* Subrayado animado */
+  .nav-menu a {
+    position: relative;
+    padding-bottom: .5rem;
+    border-bottom: none;
+  }
+  
+  .nav-menu a:hover::after {
+    transform: scaleX(1);
+  }
+  
+  .nombre-menu {
+  
+    margin-top: 80px;
+              /* ocupa todo el ancho de la pantalla */
+  }
+  
+  .nav-menu .nombre-menu p {
+  
+  
+    font-size: 79px;
+  
+  }
+  
+  .nav-menu .nombre-menu p {
+    /* Distribuye cada <span> equitativamente */
+    display: flex;
+    justify-content: space-between;
+  
+  }
+  
+  }
+  @media only screen and (min-width: 1242px) {
+
+
+    /* Nav full-screen oculto arriba */
+    .nav-menu {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #faf5ef;
+      padding: 4rem 2rem;
+      transform: translateY(-100%);
+      transition: transform .7s ease-in-out;
+      z-index: 1000;
+      overflow-y: auto;
+    }
+    
+    /* Coloca logo + cesta al nivel de la cruz */
+    .nav-menu .menu-header {
+      position: absolute;
+      top: 7.5px;
+      left: 0px;
+      right: 25px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      z-index: 1001;
+    }
+    
+    /* Logo centrado */
+    .nav-menu .logo-menu img {
+      width: 400px;
+    
+    }
+    
+    /* Cesta a la derecha con margen */
+    .nav-menu .cesta-menu {
+      position: absolute;
+      right: 25px;
+      margin-right: 40px;        /* margen derecho aumentado */
+    }
+    .nav-menu .cesta-menu img {
+      width: 100px;
+      
+    }
+    
+    /* Lista de enlaces */
+    .nav-menu ul {
+      padding-top: 70px;
+    
+    }
+    
+    .nav-menu li {
+      margin-bottom: 2rem;
+    }
+    .nav-menu a.texto-grande {
+      font-size: 50px;
+    }
+    
+    .nav-menu a.texto-pequeno {
+      font-size: 30px;
+    }
+    
+    
+    
+    /* Subrayado animado */
+    .nav-menu a {
+      position: relative;
+      padding-bottom: .5rem;
+      border-bottom: none;
+    }
+    
+    .nav-menu a:hover::after {
+      transform: scaleX(1);
+    }
+    
+    .nombre-menu {
+    
+      margin-top: 40px;
+                /* ocupa todo el ancho de la pantalla */
+    }
+    
+    .nav-menu .nombre-menu p {
+    
+    
+      font-size: 128px;
+    
+    }
+    
+    .nav-menu .nombre-menu p {
+      /* Distribuye cada <span> equitativamente */
+      display: flex;
+      justify-content: space-between;
+    
+    }
+    
+    }
+
+    @media only screen and (min-width: 1880px) {
+
+
+      /* Nav full-screen oculto arriba */
+      .nav-menu {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #faf5ef;
+        padding: 4rem 2rem;
+        transform: translateY(-100%);
+        transition: transform .7s ease-in-out;
+        z-index: 1000;
+        overflow-y: auto;
+      }
+      
+      /* Coloca logo + cesta al nivel de la cruz */
+      .nav-menu .menu-header {
+        position: absolute;
+        top: 7.5px;
+        left: 0px;
+        right: 25px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+        z-index: 1001;
+      }
+      
+      /* Logo centrado */
+      .nav-menu .logo-menu img {
+        width: 400px;
+      
+      }
+      
+      /* Cesta a la derecha con margen */
+      .nav-menu .cesta-menu {
+        position: absolute;
+        right: 25px;
+        margin-right: 40px;        /* margen derecho aumentado */
+      }
+      .nav-menu .cesta-menu img {
+        width: 100px;
+        
+      }
+      
+      /* Lista de enlaces */
+      .nav-menu ul {
+        padding-top: 70px;
+      
+      }
+      
+      .nav-menu li {
+        margin-bottom: 2rem;
+      }
+      .nav-menu a.texto-grande {
+        font-size: 50px;
+      }
+      
+      .nav-menu a.texto-pequeno {
+        font-size: 30px;
+      }
+      
+      
+      
+      /* Subrayado animado */
+      .nav-menu a {
+        position: relative;
+        padding-bottom: .5rem;
+        border-bottom: none;
+      }
+      
+      .nav-menu a:hover::after {
+        transform: scaleX(1);
+      }
+      
+      .nombre-menu {
+      
+        margin-top: 65px;
+                  /* ocupa todo el ancho de la pantalla */
+      }
+      
+      .nav-menu .nombre-menu p {
+      
+      
+        font-size: 195px;
+      
+      }
+      
+      .nav-menu .nombre-menu p {
+        /* Distribuye cada <span> equitativamente */
+        display: flex;
+        justify-content: space-between;
+      
+      }
+      
+      }
+ /* Ajustes para pantallas grandes */
+@media only screen and (min-width: 768px) {
+    header {
+        padding-top: 20px;
+        height: 80px;
+        justify-content: center; /* Centra los elementos horizontalmente */
+        
+    }
+    main {
+      padding-top: 80px; /* o lo que mida el header fijo */
+    }
+
+    .menu-hamburguesa {
+        position: absolute;
+        left: 25px; /* Ajusta la posición del menú hamburguesa */
+        top: 35px;
+    }
+
+    .logo img {
+        width: 300px; /* Ajusta el tamaño del logo */
+        height: auto;
+        margin-top: 25px;
+    }
+
+    .textos-header {
+        font-size: 12px; /* Ajusta el tamaño de los textos */
+        top: 15px;
+    }
+
+    .cesta, .perfil {
+        font-size: 15px; /* Aumenta el tamaño de la fuente */
+    }
+
+    .special-offers, .make-your-order {
+        font-size: 15px;
+    }
+
+    .special-offers {
+        margin-left: 300px; /* Ajusta el margen para la sección de "special offers" */
+    }
+
+    .make-your-order {
+        bottom: 100px;
+        margin-right: 350px; /* Ajusta el margen para la sección de "make your order" */
+    }
+
+    .iconos-derecha {
+        margin-right: 100px;
+        top: 25px;
+    }
+
+    .textos-header {
+      pointer-events: none;
+    }
+    
+    .textos-header a {
+      pointer-events: auto;
+    }
+    
+}
+
+@media only screen and (min-width: 890px) and (max-width: 1241px) {
+    .special-offers {
+        margin-left: 150px; /* Ajusta el margen para la sección de "special offers" */
+    }
+
+    .make-your-order {
+        margin-right: 200px; /* Ajusta el margen para la sección de "make your order" */
+    }
+
+    .iconos-derecha {
+        margin-right: 50px;
+    }
+}
+
+
+
+@media only screen and (min-width: 769px) and (max-width: 889px) {
+    .special-offers {
+        margin-left: 50px; /* Ajusta el margen para la sección de "special offers" */
+    }
+
+    .make-your-order {
+        margin-right: 170px; /* Ajusta el margen para la sección de "make your order" */
+    }
+
+    .iconos-derecha {
+        margin-right: 50px;
+    }
+}
+@media only screen and (min-width: 1400px) {
+  .menu-hamburguesa {
+    left: 50px; /* Ajusta la posición del menú hamburguesa */
+  }
+  .iconos-derecha {
+    margin-right: 50px;
+    gap: 20px;
+  } 
+  .iconos-derecha img {
+    width: 56px;
+  }
+}
+
+.contact-section {
+    font-family: Georgia, serif;
+    padding: 2rem 3rem;
+    background: url(./img/fondo_pag\ derecha.jpg);
+    color: black;
+  }
+  
+  .contact-header h2 {
+    color: rgb(164, 12, 12);
+    font-size: 0.9rem;
+    margin-top: 30px;
+    animation: fadeInUp 1s ease-out forwards;
+    opacity: 0;
+  }
+  
+  .contact-header h1 {
+    margin-top: -1px;
+    font-size: 1.7rem;
+    margin-bottom: 2rem;
+  }
+
+  .texto1 {
+    animation: fadeInUp 1s ease-out forwards;
+    opacity: 0;
+  }
+  .contact-header2 h2 {
+    color: rgb(164, 12, 12);
+    font-size: 0.9rem;
+    margin-top: 50px;
+  }
+
+  .texto2 {
+    animation: fadeInUp 1.3s ease-out forwards;
+    opacity: 0;
+  }
+  
+  .contact-header2 h1 {
+    margin-top: -1px;
+    font-size: 1.7rem;
+    margin-bottom: 2rem;
+  }
+
+  .employee-select-wrapper {
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  font-family: Georgia, serif;
+}
+
+.employee-select-wrapper label {
+  font-size: 1rem;
+  color: #000000;
+  margin-bottom: 1rem;
+  animation: fadeInUp 1.6s ease-out forwards;
+    opacity: 0;
+}
+
+.employee-select-wrapper {
+  margin-bottom: 1.5rem;
+  font-family: Georgia, serif;
+  animation: fadeInUp 1.5s ease-out forwards;
+    opacity: 0;
+}
+
+/* 1) Envoltorio relativo para posicionar la flecha */
+.employee-select-wrapper .select-container {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  max-width: 400px;
+}
+
+/* 2) Estilo del select: sin aspecto nativo y con espacio a la derecha */
+.employee-select-wrapper .select-container select {
+  width: 100%;
+  padding: 0.6rem 1rem;
+  padding-right: 2.5rem;            /* deja hueco para la flecha */
+  font-family: Georgia, serif;
+  font-size: 1rem;
+  color: #333;
+  background-color: #fff;           /* fondo blanco */
+  border: 2px solid #000;           /* borde redondeado */
+  border-radius: 1.2rem;
+  appearance: none;
+  outline: none;
+  cursor: pointer;
+}
+
+/* 3) El pseudo-elemento ::after dibuja la flecha */
+.employee-select-wrapper .select-container::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 1.8rem;                      /* separación del borde */
+  transform: translateY(-50%);
+  width: 1.2rem;                    /* tamaño de tu flecha */
+  height: 1rem;
+  background: url("/Staff/img/flecha-negraa.png") no-repeat center center;
+  background-size: contain;
+  pointer-events: none;             /* no interfiere con clicks */
+}
+
+/* Flecha personalizada (para navegadores que soporten ::after en select) */
+.employee-select-wrapper select::-ms-expand {
+  display: none;  /* para IE/Edge */
+}
+
+/* Hover & foco */
+.employee-select-wrapper select:hover,
+.employee-select-wrapper select:focus {
+  box-shadow: 0 0 4px rgba(0,0,0,0.3);
+}
+  .contact-wrapper {
+    background: url('./img/madera roja.png');
+    background-size: cover;
+    border-radius: 20px;
+    padding: 8px;
+    margin-bottom: 2rem;
+    overflow: hidden;
+    animation: fadeInUp 1.8s ease-out forwards;
+    opacity: 0;
+  }
+
+  
+  
+  .contact-card {
+    background-color: #fdfaf6;
+    border-radius: 17px;
+    padding: 1.7rem;
+    
+  }
+  
+  .contact-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .contact-label {
+    color: rgb(164, 12, 12);
+    font-weight: bold;
+    margin-top: 1rem;
+  }
+  
+  .contact-info {
+    text-align: left;
+    font-weight: bold;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+  .contact-days {
+    font-weight: bold;
+  }
+  
+  .contact-hours {
+    margin-top: 6px;
+  }
+
+
+  .social-icons-inline {
+    margin-top: 16px; /* aquí forzamos separación vertical */
+    display: flex;
+    gap: 12px;
+  }
+  
+  .social-icons-inline a {
+    color: black;
+    font-size: 18px;
+    text-decoration: none;
+    transition: transform 0.3s ease, color 0.3s ease;
+  }
+  
+  .social-icons-inline a:hover {
+    color: rgb(180, 16, 16);
+    transform: scale(1.2);
+  }
+  
+  .textarea-card textarea {
+    width: 100%;
+    height: 120px;
+    border: none;
+    outline: none;
+    resize: none;
+    background-color: transparent;
+    font-family: Georgia, serif;
+    font-size: 1rem;
+    color: #333;
+    padding: 0.5rem;
+  }
+  .textarea-card2 textarea {
+    width: 100%;
+    height: 30px;
+    border: none;
+    outline: none;
+    resize: none;
+    background-color: transparent;
+    font-family: Georgia, serif;
+    font-size: 1rem;
+    color: #333;
+    padding: 0.5rem;
+  }
+
+  
+  .word-count {
+    text-align: right;
+    font-size: 0.8rem;
+    color: gray;
+    margin-top: 0.5rem;
+  }
+  .word-count2 {
+    text-align: right;
+    font-size: 0.8rem;
+    color: gray;
+    margin-top: 0rem;
+  }
+  
+  .send-button {
+    text-align: right;
+  }
+  
+  .send-button button {
+    background: url("./img/madera roja clara.png");
+    border: 2px solid black;
+    padding: 10px 30px;
+    color: white;
+    font-family: Georgia, serif;
+    font-weight: bold;
+    border-radius: 2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    animation: fadeInUp 1.8s ease-out forwards;
+    opacity: 0;
+  }
+  
+  .send-button button:hover {
+    transform: scale(1.03);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+
+  @media (min-width: 900px) {
+    .contact-section {
+      padding: 2rem 10rem;
+    }
+    .contact-header h2 {
+      font-size: 1.1rem;
+    }
+    
+    .contact-header h1 {
+      font-size: 1.9rem;
+    }
+    .contact-header2 h2 {
+      color: rgb(164, 12, 12);
+      font-size: 0.9rem;
+      margin-top: 80px;
+    }
+    
+    .contact-header2 h1 {
+      margin-top: -1px;
+      font-size: 1.7rem;
+      margin-bottom: 2rem;
+    }
+    .contact-row {
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: space-between;
+    }
+  
+    .contact-label {
+      font-size: 1.1rem;
+      margin-top: 20px; 
+      width: 200px;
+      flex-shrink: 0;
+      gap: 1rem;
+    }
+  
+    .contact-info {
+      margin-top: -20px;
+      margin-bottom: 0;
+      font-size: 1.1rem;
+      text-align: right;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+    }
+    .contact-hours {
+      margin-top: 4px;
+    }
+  
+    .contact-days,
+    .contact-hours {
+      display: inline; /* en PC puedes mantenerlos en la misma línea si quieres */
+      margin-right: 10px;
+    }
+  
+    .textarea-card textarea {
+      font-size: 1.1rem;
+    }
+  
+    .word-count {
+      font-size: 0.9rem;
+    }
+  
+    .send-button button {
+      font-size: 1.1rem;
+      padding: 12px 36px;
+      margin-bottom: 15px;
+    }
+  
+    .social-icons-inline a {
+      font-size: 20px;
+      
+    }
+  }
+  /* Contenedor de 3 columnas */
+.offboarding-cards {
+  display: flex;
+  gap: 2rem;
+  
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+
+/* Cada tarjeta */
+.offboarding-cards .card {
+  background-color: rgba(253, 250, 246, 0.9);
+  border: 1px solid #000;
+  border-radius: 1rem;
+  padding: 0.92rem;
+  padding-left: 50px;
+  padding-right: 50px;
+  flex: 1 1 20%; 
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+   min-width: 250px; 
+}
+
+/* Encabezado de la tarjeta */
+.offboarding-cards .card h3 {
+  margin-top: 20px;
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+/* Listas con viñeta */
+.offboarding-cards .card ul {
+  list-style: disc inside;
+  margin: 0.5rem 1.5rem 1rem;
+  padding: 0;
+  line-height: 2;
+}
+
+/* En móvil apila */
+@media (max-width: 768px) {
+  .offboarding-cards {
+    flex-direction: column;
+  }
+  .offboarding-cards .card {
+    flex: 1 1 100%;
+    margin-bottom: 1.5rem;
+  }
+}
+
+/* Reutiliza tu animación */
+.fadeInUp {
+  animation: fadeInUp 1s ease-out forwards;
+}
+
+  /* Contenedor flex para texto + imagen */
+.risk-wrapper {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-top: 2rem;
+}
+
+/* Lista sin estilo por defecto */
+.risk-list {
+  flex: 1;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  margin-top: 30px;
+}
+
+/* Cada elemento con viñeta custom */
+.risk-list li {
+  position: relative;
+  padding-left: 1.5rem;
+  margin-bottom: 1.4rem;
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+/* La viñeta • a la izquierda */
+.risk-list li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: #000;
+  font-size: 1.3rem;
+  line-height: 1;
+}
+
+/* Imagen a la derecha */
+.risk-image {
+  flex-shrink: 0;
+  margin-left: 2rem;
+  margin-top: 30px;
+  margin-right: 12rem;
+}
+
+.risk-image img {
+  display: block;
+  max-width: 160px;  /* ajusta según tu diseño */
+  height: auto;
+}
+
+/* Animación fadeInUp (si no la tienes ya definida) */
+.fadeInUp {
+  animation: fadeInUp 1s ease-out forwards;
+}
+
+/* Contenedor general con texto + contenido */
+.benefits-wrapper {
+  margin-top: 2rem;
+}
+
+.benefits-text {
+  max-width: 800px;
+  margin-bottom: 1.5rem;
+  color: #333;
+  font-style: italic;
+}
+
+/* --- Contenedor flex: logos a la izquierda, cupón a la derecha --- */
+.benefits-content {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  gap: 2rem;
+  padding-bottom: 80px;
+}
+
+/* --- Grid de 3×3 para los logos --- */
+.benefits-logos {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  row-gap: 2rem;      /* espacio vertical entre filas */
+  column-gap: 4rem;   /* espacio horizontal entre columnas */
+  align-items: center;
+  margin-left: 100px;
+}
+
+/* Tamaño uniforme para los logos */
+.benefits-logos img {
+  max-height: 50px;
+  object-fit: contain;
+}
+
+/* Cupón siempre al costado */
+.benefits-coupon {
+  flex-shrink: 0;
+}
+
+/* Tamaño del cupón */
+.benefits-coupon img {
+  max-width: 400px;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-right: 50px;
+}
+
+/* Adaptación móvil: apilar debajo */
+@media (max-width: 800px) {
+  .benefits-content {
+    flex-direction: column;
+    align-items: center;
+  }
+  .benefits-logos {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+  .benefits-coupon {
+    margin-top: 2rem;
+  }
+}
+
+
+
+/* Estilos base: Mobile First */
+.footer {
+  background-color: #fdfaf6;
+  padding: 40px 20px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  color: #000;
+  text-align: center;
+}
+
+/* Animaciones suaves */
+.footer a,
+.footer button,
+.footer li a,
+.footer svg {
+  transition: all 0.3s ease;
+}
+
+/* Newsletter */
+.newsletter h3 {
+  font-size: 18px;
+  color: #b82929;
+  margin-bottom: 20px;
+}
+
+/* Formulario */
+.subscribe-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+/* Input del email */
+.subscribe-form input[type="email"] {
+  text-align: center;
+  border: none;
+  border-bottom: 1px solid #000;
+  background: transparent;
+  padding: 8px 4px;
+  width: 100%;
+  max-width: 300px;
+  font-size: 14px;
+  outline: none;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+/* Botón Subscribe */
+.subscribe-form button {
+  background-color: #000;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 14px;
+  border-radius: 30px; /* Opcional, para el botón redondeado como el tuyo */
+  transition: color 0.4 ease;
+  
+}
+
+.subscribe-form button:hover {
+  background-image: url("./img/madera\ roja-2.png");
+  background-size: cover;
+  background-position: center;
+  color: white;
+}
+
+/* Footer Links */
+.footer-links {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column; /* Siempre en columna */
+  align-items: center;
+  gap: 20px; /* Menos espacio entre las columnas */
+}
+
+/* Cada columna */
+.footer-column {
+  text-align: center;
+}
+
+.footer-column h4 {
+  color: #b82929;
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+/* Lista dentro de las columnas */
+.footer-column ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* List items */
+.footer-column ul li a {
+  margin-bottom: 8px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: #000;
+  text-decoration: none;
+}
+
+/* Hover en los li: cambiar color y tamaño */
+.footer-column ul li a:hover {
+  color: #c92a2a;
+  
+}
+
+/* Footer inferior */
+.bottom-footer {
+  margin-top: 50px;
+  border-top: 1px solid #ccc;
+  padding-top: 30px;
+}
+
+/* Logo inferior */
+.logo-Footer img {
+  width: 200px;
+  margin: 0 auto;
+}
+
+/* Países */
+.countries {
+  font-size: 10px;
+  margin-top: 20px;
+  line-height: 1.5;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 10px;
+}
+
+/* Redes sociales */
+.social-icons {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.social-icons a i {
+  font-size: 24px;
+  color: black;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.social-icons a:hover i {
+  color: #b82929;
+  transform: scale(1.2);
+}
+
+@media (min-width: 540px) {
+  /* Formularios en línea */
+  .subscribe-form {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+  }
+
+  /* Inputs más grandes */
+  .subscribe-form input[type="email"] {
+    width: 300px;
+    font-size: 15px;
+    text-align: left;
+  }
+
+  .subscribe-form button {
+    font-size: 16px;
+    padding: 10px 25px;
+  }
+
+  /* Links organizados en filas */
+  .footer-links {
+    flex-direction: row;
+    justify-content: center;
+    gap: 100px;
+    text-align: left;
+  }
+
+  .footer-column {
+    text-align: left;
+  }
+
+  .footer-column h4 {
+    font-size: 16px;
+    margin-bottom: 15px;
+  }
+
+  .footer-column ul li {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+
+  /* Footer inferior */
+  .bottom-footer {
+    margin-top: 60px;
+    padding-top: 30px;
+  }
+
+  .logo-Footer img {
+    width: 270px;
+  }
+
+  .countries {
+    font-size: 12px;
+    margin-top: 20px;
+    max-width: 1000px;
+    line-height: 1.6;
+  }
+
+  /* Redes sociales más separadas */
+  .social-icons {
+    margin-top: 25px;
+    gap: 30px;
+  }
+
+  .social-icons a i {
+    width: 28px;
+    height: 28px;
+  }
+}
+.marquee {
+  background-color: #000000;
+  overflow: hidden;
+  width: 100%;
+  white-space: nowrap;
+}
+
+.marquee-inner {
+  display: flex;
+  width: fit-content;
+  animation: scroll-left 40s linear infinite;
+}
+
+.marquee-content {
+  display: flex;
+  align-items: center;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-weight: bold;
+  font-size: 30px;
+  color: #f5f5f5;
+  padding: 15px 0;
+}
+
+.marquee-content span {
+  margin: 0 20px;
+}
+
+/* Animación continua, sin parones */
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+

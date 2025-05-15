@@ -1,0 +1,1196 @@
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Georgia, serif;
+  width: 100%;
+}
+
+/* Header principal */
+header {
+  background-color: #000;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 110px;
+  padding: 0 10px;
+  width: 100%;
+  position: fixed;
+  z-index: 1000;
+  overflow: hidden;
+  padding-left: 0;
+}
+main {
+  padding-top: 110px;
+}
+
+/* Enlaces genéricos */
+header a {
+  text-decoration: none;
+  color: inherit;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Logo del header */
+.logo img {
+  width: 200px;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+/* Iconos a la derecha */
+.iconos-derecha {
+  position: absolute;
+  top: 10px;
+  right: 25px;
+  display: flex;
+  align-items: center;
+}
+.iconos-derecha a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+}
+.iconos-derecha img {
+  width: 40px;
+  height: auto;
+  object-fit: cover;
+}
+
+/* Textos bajo el header */
+.textos-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  font-size: 10px;
+  position: absolute;
+  top: 70px;
+  left: 0;
+  padding: 0 20px;
+  bottom: 20px;
+  z-index: 1;
+}
+
+/* Botones de texto */
+.special-offers,
+.make-your-order {
+  white-space: nowrap;
+  padding: 7.5px 10px;
+  border-radius: 10px;
+  border: 1px solid #fff;
+}
+.special-offers {
+  margin-left: 28px;
+  font-size: 10px;
+}
+.make-your-order {
+  margin-left: auto;
+  margin-right: 60px;
+  font-size: 10px;
+}
+.special-offers:hover,
+.make-your-order:hover {
+  background-color: #fff;
+  color: #000;
+  transition: all 0.45s ease;
+}
+
+/* Hover en iconos */
+.cesta:hover img,
+.perfil:hover img {
+  filter: brightness(0) invert(1);
+}
+
+/* Menú hamburguesa */
+.menu-hamburguesa {
+  position: absolute;
+  top: 25px;
+  left: 25px;
+  width: 35px;            /* ancho inicial */
+  height: 40px;           /* altura para área clicable */
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  cursor: pointer;
+  z-index: 1001;
+  transition: width .3s ease-in-out;
+}
+/* Al hover y checked: ancho ampliado y baja la cruz */
+.menu-hamburguesa:hover,
+#menu-toggle:checked + .menu-hamburguesa {
+  width: 60px;            /* ancho ampliado en hover/checked */
+  top: 30px;              /* baja la cruz solo en hover y checked */
+}
+.menu-hamburguesa span {
+  display: block;
+  height: 1.5px;
+  width: 100%;
+  background-color: #fff;
+  border-radius: 2px;
+  pointer-events: none;
+  transition: transform .3s, opacity .3s, background-color .3s, height .3s;
+  transform-origin: center;
+}
+.menu-hamburguesa:hover,
+#menu-toggle:checked + .menu-hamburguesa {
+  width: 60px;              /* ancho ampliado solo en hover y checked */
+}
+
+.menu-hamburguesa span {
+  display: block;
+  height: 1.5px;
+  width: 100%;
+  background-color: #fff;
+  border-radius: 2px;
+  pointer-events: none;
+  transition: transform .3s, opacity .3s, background-color .3s, height .3s;
+  transform-origin: center;
+}
+
+/* Nav full-screen oculto arriba */
+.nav-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #faf5ef;
+  padding: 4rem 2rem;
+  transform: translateY(-100%);
+  transition: transform .7s ease-in-out;
+  z-index: 1000;
+  overflow-y: auto;
+}
+
+/* Coloca logo + cesta al nivel de la cruz */
+.nav-menu .menu-header {
+  position: absolute;
+  top: 7.5px;
+  left: 0px;
+  right: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  z-index: 1001;
+}
+
+/* Logo centrado */
+.nav-menu .logo-menu img {
+  width: 237px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+/* Cesta a la derecha con margen */
+.nav-menu .cesta-menu {
+  position: absolute;
+  right: 25px;
+  margin-right: 15px;        /* margen derecho aumentado */
+}
+.nav-menu .cesta-menu img {
+  width: 70px;
+  height: auto;
+  display: block;
+}
+
+/* Lista de enlaces */
+.nav-menu ul {
+  padding-top: 50px;
+  list-style: none;
+  padding-left: 25px;
+  margin: 0;
+}
+.nav-menu li {
+  margin-bottom: 1rem;
+}
+.nav-menu a {
+  display: inline-block;
+  text-decoration: none;
+  font-family: 'Roboto Slab', serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #000;
+  border-bottom: 2px solid transparent;
+  padding-bottom: .2rem;
+  transition: border-color .2s;
+}
+
+.nav-menu a.texto-grande {
+  font-size: 27px;
+}
+
+.nav-menu a.texto-pequeno {
+  font-size: 20px;
+}
+
+/* Abrir menú */
+#menu-toggle:checked + .menu-hamburguesa + .nav-menu,
+.menu-hamburguesa:hover + .nav-menu {
+  transform: translateY(0);
+}
+
+/* Transformación a X */
+#menu-toggle:not(:checked) + .menu-hamburguesa:hover span:nth-child(1),
+#menu-toggle:checked + .menu-hamburguesa span:nth-child(1) {
+  height: 4px;
+  background-color: #5E442C;
+  transform: translateY(10.5px) rotate(45deg);
+  z-index: 2;
+}
+#menu-toggle:not(:checked) + .menu-hamburguesa:hover span:nth-child(2),
+#menu-toggle:checked + .menu-hamburguesa span:nth-child(2) {
+  opacity: 0;
+}
+#menu-toggle:not(:checked) + .menu-hamburguesa:hover span:nth-child(3),
+#menu-toggle:checked + .menu-hamburguesa span:nth-child(3) {
+  height: 4px;
+  background-color: #E5BC62;
+  transform: translateY(-10.5px) rotate(-45deg);
+  z-index: 1;
+}
+
+/* Subrayado animado */
+.nav-menu a {
+  position: relative;
+  padding-bottom: .5rem;
+  border-bottom: none;
+}
+.nav-menu ul li a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 20px;
+  right: 20px;
+  height: 5.5px;
+  background-image: url("./img/madera roja.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform .3s ease-in-out;
+}
+.nav-menu a:hover::after {
+  transform: scaleX(1);
+}
+
+.nombre-menu {
+  position: fixed;
+  left: 0;
+  padding: 0;
+  width: 100%;
+  margin-top: 170px;
+            /* ocupa todo el ancho de la pantalla */
+}
+
+.nav-menu .nombre-menu p {
+  display: block;                /* ocupa todo el ancho */
+
+  margin: 0;
+  padding: 0;
+
+  font-size: 38.5px;
+  line-height: 1; 
+  font-weight: bold;
+  width: 30%;    
+        /* ocupa todo el ancho de la pantalla */
+}
+
+.nav-menu .nombre-menu p {
+  /* Distribuye cada <span> equitativamente */
+  display: flex;
+  justify-content: space-between;
+  margin: 0;
+  padding: 0;
+}
+.nav-menu .nombre-menu p span {
+  flex: none;
+  background: url("./img/madera roja.png") no-repeat center center;
+  background-size: cover;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  /* Compatibilidad no WebKit */
+  background-clip: text;
+  color: transparent;
+  opacity: 0.57;
+}
+
+@media only screen and (min-width: 768px) {
+
+
+  
+  /* Logo centrado */
+  .nav-menu .logo-menu img {
+    width: 375px;
+  
+  }
+  
+  /* Cesta a la derecha con margen */
+  .nav-menu .cesta-menu {
+    position: absolute;
+    right: 25px;
+    margin-right: 40px;        /* margen derecho aumentado */
+  }
+  .nav-menu .cesta-menu img {
+    width: 100px;
+    
+  }
+  
+  /* Lista de enlaces */
+  .nav-menu ul {
+    padding-top: 70px;
+  
+  }
+  
+  .nav-menu li {
+    margin-bottom: 2rem;
+  }
+  .nav-menu a.texto-grande {
+    font-size: 50px;
+  }
+  
+  .nav-menu a.texto-pequeno {
+    font-size: 30px;
+  }
+  
+  
+  
+  /* Subrayado animado */
+  .nav-menu a {
+    position: relative;
+    padding-bottom: .5rem;
+    border-bottom: none;
+  }
+  
+  .nav-menu a:hover::after {
+    transform: scaleX(1);
+  }
+  
+  .nombre-menu {
+  
+    margin-top: 80px;
+              /* ocupa todo el ancho de la pantalla */
+  }
+  
+  .nav-menu .nombre-menu p {
+  
+  
+    font-size: 79px;
+  
+  }
+  
+  .nav-menu .nombre-menu p {
+    /* Distribuye cada <span> equitativamente */
+    display: flex;
+    justify-content: space-between;
+  
+  }
+  
+  }
+  @media only screen and (min-width: 1242px) {
+
+
+    /* Nav full-screen oculto arriba */
+    .nav-menu {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #faf5ef;
+      padding: 4rem 2rem;
+      transform: translateY(-100%);
+      transition: transform .7s ease-in-out;
+      z-index: 1000;
+      overflow-y: auto;
+    }
+    
+    /* Coloca logo + cesta al nivel de la cruz */
+    .nav-menu .menu-header {
+      position: absolute;
+      top: 7.5px;
+      left: 0px;
+      right: 25px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      z-index: 1001;
+    }
+    
+    /* Logo centrado */
+    .nav-menu .logo-menu img {
+      width: 400px;
+    
+    }
+    
+    /* Cesta a la derecha con margen */
+    .nav-menu .cesta-menu {
+      position: absolute;
+      right: 25px;
+      margin-right: 40px;        /* margen derecho aumentado */
+    }
+    .nav-menu .cesta-menu img {
+      width: 100px;
+      
+    }
+    
+    /* Lista de enlaces */
+    .nav-menu ul {
+      padding-top: 70px;
+    
+    }
+    
+    .nav-menu li {
+      margin-bottom: 2rem;
+    }
+    .nav-menu a.texto-grande {
+      font-size: 50px;
+    }
+    
+    .nav-menu a.texto-pequeno {
+      font-size: 30px;
+    }
+    
+    
+    
+    /* Subrayado animado */
+    .nav-menu a {
+      position: relative;
+      padding-bottom: .5rem;
+      border-bottom: none;
+    }
+    
+    .nav-menu a:hover::after {
+      transform: scaleX(1);
+    }
+    
+    .nombre-menu {
+    
+      margin-top: 40px;
+                /* ocupa todo el ancho de la pantalla */
+    }
+    
+    .nav-menu .nombre-menu p {
+    
+    
+      font-size: 128px;
+    
+    }
+    
+    .nav-menu .nombre-menu p {
+      /* Distribuye cada <span> equitativamente */
+      display: flex;
+      justify-content: space-between;
+    
+    }
+    
+    }
+
+    @media only screen and (min-width: 1880px) {
+
+
+      /* Nav full-screen oculto arriba */
+      .nav-menu {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #faf5ef;
+        padding: 4rem 2rem;
+        transform: translateY(-100%);
+        transition: transform .7s ease-in-out;
+        z-index: 1000;
+        overflow-y: auto;
+      }
+      
+      /* Coloca logo + cesta al nivel de la cruz */
+      .nav-menu .menu-header {
+        position: absolute;
+        top: 7.5px;
+        left: 0px;
+        right: 25px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+        z-index: 1001;
+      }
+      
+      /* Logo centrado */
+      .nav-menu .logo-menu img {
+        width: 400px;
+      
+      }
+      
+      /* Cesta a la derecha con margen */
+      .nav-menu .cesta-menu {
+        position: absolute;
+        right: 25px;
+        margin-right: 40px;        /* margen derecho aumentado */
+      }
+      .nav-menu .cesta-menu img {
+        width: 100px;
+        
+      }
+      
+      /* Lista de enlaces */
+      .nav-menu ul {
+        padding-top: 70px;
+      
+      }
+      
+      .nav-menu li {
+        margin-bottom: 2rem;
+      }
+      .nav-menu a.texto-grande {
+        font-size: 50px;
+      }
+      
+      .nav-menu a.texto-pequeno {
+        font-size: 30px;
+      }
+      
+      
+      
+      /* Subrayado animado */
+      .nav-menu a {
+        position: relative;
+        padding-bottom: .5rem;
+        border-bottom: none;
+      }
+      
+      .nav-menu a:hover::after {
+        transform: scaleX(1);
+      }
+      
+      .nombre-menu {
+      
+        margin-top: 65px;
+                  /* ocupa todo el ancho de la pantalla */
+      }
+      
+      .nav-menu .nombre-menu p {
+      
+      
+        font-size: 195px;
+      
+      }
+      
+      .nav-menu .nombre-menu p {
+        /* Distribuye cada <span> equitativamente */
+        display: flex;
+        justify-content: space-between;
+      
+      }
+      
+      }
+ /* Ajustes para pantallas grandes */
+@media only screen and (min-width: 768px) {
+    header {
+        padding-top: 20px;
+        height: 80px;
+        justify-content: center; /* Centra los elementos horizontalmente */
+        
+    }
+    main {
+      padding-top: 80px; /* o lo que mida el header fijo */
+    }
+
+    .menu-hamburguesa {
+        position: absolute;
+        left: 25px; /* Ajusta la posición del menú hamburguesa */
+        top: 35px;
+    }
+
+    .logo img {
+        width: 300px; /* Ajusta el tamaño del logo */
+        height: auto;
+        margin-top: 25px;
+    }
+
+    .textos-header {
+        font-size: 12px; /* Ajusta el tamaño de los textos */
+        top: 15px;
+    }
+
+    .cesta, .perfil {
+        font-size: 15px; /* Aumenta el tamaño de la fuente */
+    }
+
+    .special-offers, .make-your-order {
+        font-size: 15px;
+    }
+
+    .special-offers {
+        margin-left: 300px; /* Ajusta el margen para la sección de "special offers" */
+    }
+
+    .make-your-order {
+        bottom: 100px;
+        margin-right: 350px; /* Ajusta el margen para la sección de "make your order" */
+    }
+
+    .iconos-derecha {
+        margin-right: 100px;
+        top: 25px;
+    }
+
+    .textos-header {
+      pointer-events: none;
+    }
+    
+    .textos-header a {
+      pointer-events: auto;
+    }
+    
+}
+
+@media only screen and (min-width: 890px) and (max-width: 1241px) {
+    .special-offers {
+        margin-left: 150px; /* Ajusta el margen para la sección de "special offers" */
+    }
+
+    .make-your-order {
+        margin-right: 200px; /* Ajusta el margen para la sección de "make your order" */
+    }
+
+    .iconos-derecha {
+        margin-right: 50px;
+    }
+}
+
+
+
+@media only screen and (min-width: 769px) and (max-width: 889px) {
+    .special-offers {
+        margin-left: 50px; /* Ajusta el margen para la sección de "special offers" */
+    }
+
+    .make-your-order {
+        margin-right: 170px; /* Ajusta el margen para la sección de "make your order" */
+    }
+
+    .iconos-derecha {
+        margin-right: 50px;
+    }
+}
+@media only screen and (min-width: 1400px) {
+  .menu-hamburguesa {
+    left: 50px; /* Ajusta la posición del menú hamburguesa */
+  }
+  .iconos-derecha {
+    margin-right: 50px;
+    gap: 20px;
+  } 
+  .iconos-derecha img {
+    width: 56px;
+  }
+}
+.reservar{
+  background: url('./img/fondo_pag\ derecha.jpg');
+}
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-form {
+  background: url('./img/madera\ roja-2.png');
+  background-size: cover;
+  background-position: center;
+  padding: 30px; /* Reducir más el padding */
+  border-radius: 10px; /* Menor border-radius */
+  width: 60%; /* Reducir el width a un 70% */
+  display: flex;
+  height: 360px;
+  flex-direction: column;
+  border: 3px solid rgba(0, 0, 0, 0.7); /* Borde más fino */
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.4); /* Menor sombra */
+  margin-bottom: 55px; /* Menor margin-bottom */
+  margin-top: 20px;
+}
+
+.login-form label {
+  color: white;
+  margin-top: 10px; /* Menor margen en los labels */
+  font-size: 13px; /* Font-size aún más pequeño */
+  animation: fadeInUp 1.8s ease-out forwards;
+    opacity: 0;
+}
+
+.login-form input,
+.login-form select {
+  padding: 8px; /* Reducir padding en los inputs */
+  margin-top: 9.5px; /* Reducir margen entre input y label */
+  border: none;
+  border-radius: 3px; /* Border-radius aún más pequeño */
+  font-size: 12px;
+  padding-left: 20px;
+  position: relative;
+  animation: fadeInUp 1.8s ease-out forwards;
+    opacity: 0;
+  
+}
+
+.login-form input[type="date"],
+.login-form select {
+  color: #808080; /* Color de texto gris */
+  padding-left: 15px;
+}
+
+/* Estilos generales para los inputs y selects */
+.login-form input,
+.login-form select {
+  padding: 12px; /* Reducir padding en los inputs */
+  margin-top: 9.5px; /* Reducir margen entre input y label */
+  border: none;
+  border-radius: 3px; /* Border-radius aún más pequeño */
+  font-size: 12px;
+  padding-left: 20px;
+  color: #808080; /* Color de texto gris */
+  background-color: #f0f0f0; /* Fondo gris claro */
+}
+
+/* Personalización de la flecha del select */
+.login-form select {
+  color: #808080; /* Color del texto gris */
+  background-color: #f0f0f0; /* Fondo gris claro */
+  border: 1px solid #ccc; /* Borde gris */
+  padding-right: 30px; /* Espacio para la flecha */
+  padding-left: 12.5px;
+}
+
+/* Asegurarse de que la flecha sea negra en navegadores Webkit (Chrome, Safari) */
+.login-form select::-webkit-appearance {
+  border: 1px solid black; /* Asegura que la flecha y el borde sean negros */
+  color: black; /* Cambia el color de la flecha a negro */
+}
+
+.login-button-link {
+  display: block;
+  text-align: center;
+  margin-top: 18px;
+  padding: 12px;
+  background-color: #e4c5a0;
+  border: none;
+  border-radius: 3px;
+  font-weight: bold;
+  font-size: 16.5px;
+  font-family: 'Georgia', serif;
+  cursor: pointer;
+  text-decoration: none;
+  color: black;
+  margin-bottom: 18px;
+  transition: background-color 0.3s;
+  animation: fadeInUp 1.8s ease-out forwards;
+    opacity: 0;
+}
+
+.login-button-link:hover {
+  background-color: #ffe2be;
+}
+
+.texto {
+  padding-left: 27px;
+  padding-top: 138px;
+}
+
+.texto1 {
+  color: rgb(180, 16, 16); ;
+  padding-top: 20px;
+  margin-bottom: 0px;
+  margin-top: 0;
+  font-size: 13px; /* Tamaño original en pantallas pequeñas */
+  margin-left: 10px; /* Margen izquierdo más pequeño */
+  animation: fadeInUp 1s ease-out forwards;
+  opacity: 0;
+}
+
+.texto2 {
+  font-size: 22px; /* Tamaño original en pantallas pequeñas */
+  margin-top: 5px;
+  margin-bottom: 20px;
+  margin-left: 10px; /* Margen izquierdo más pequeño */
+  animation: fadeInUp 1.3s ease-out forwards;
+  opacity: 0;
+}
+
+@media only screen and (min-width: 768px) {
+  .login-form {
+      width: 50%; /* Mantener el ancho */
+      height: 420px;
+      padding-left: 0px; /* Más espacio a la izquierda */
+      padding-right: 0px; /* Más espacio a la derecha */
+      justify-content: space-evenly;
+  }
+
+  .login-form label,
+  .login-form input,
+  .login-button-link,
+  .login-form select {
+      font-size: 18px;
+      width: 62.5%;
+      margin-left: 17%;
+      box-sizing: border-box; /* Asegura que el padding no afecte el tamaño total */
+  }
+
+  .login-button-link  {
+      display: block; /* Asegura que el botón se comporte como un bloque */
+  }
+
+  .texto1 {
+      font-size: 16px;
+      margin-left: 20px;
+  }
+
+  .texto2 {
+      font-size: 28px;
+      margin-left: 20px;
+  }
+}
+
+
+@media only screen and (min-width: 889px) {
+  .login-form {
+      width: 45%; /* Mantener el ancho */
+      height: 430px;
+      padding-left: 5px; /* Aumentar más el padding a la izquierda */
+      padding-right: 5px; /* Aumentar más el padding a la derecha */
+      justify-content: space-evenly;
+  }
+
+  .login-form label,
+  .login-form input {
+      font-size: 18px;
+  }
+  .login-button-link  {
+    display: block; /* Asegura que el botón se comporte como un bloque */
+}
+
+  .texto1 {
+      font-size: 17px;
+      margin-left: 30px;
+  }
+
+  .texto2 {
+      font-size: 30px;
+      margin-left: 30px;
+  }
+}
+
+@media only screen and (min-width: 1241px) {
+  .login-form {
+      width: 35%; /* Mantener el ancho */
+      height: 415px;
+      padding-left: 0px; /* Aumentar aún más el padding a la izquierda */
+      padding-right: 0px; /* Aumentar aún más el padding a la derecha */
+      padding-bottom: 35px;
+     
+  };
+ 
+  
+  .login-form label {
+      font-size: 18px;
+  }
+  .login-form input {
+      font-size: 17px;
+  }
+  .login-form select {
+    font-size: 15px;
+  }
+
+  .texto1 {
+      font-size: 1.1rem;
+      margin-left: 140px;
+  }
+
+  .texto2 {
+      font-size: 1.9rem;
+      margin-left: 140px;
+  }
+}
+  
+  /* Estilos base: Mobile First */
+.footer {
+  background-color: #fdfaf6;
+  padding: 40px 20px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  color: #000;
+  text-align: center;
+}
+
+/* Animaciones suaves */
+.footer a,
+.footer button,
+.footer li a,
+.footer svg {
+  transition: all 0.3s ease;
+}
+
+/* Newsletter */
+.newsletter h3 {
+  font-size: 18px;
+  color: #b82929;
+  margin-bottom: 20px;
+}
+
+/* Formulario */
+.subscribe-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+/* Input del email */
+.subscribe-form input[type="email"] {
+  text-align: center;
+  border: none;
+  border-bottom: 1px solid #000;
+  background: transparent;
+  padding: 8px 4px;
+  width: 100%;
+  max-width: 300px;
+  font-size: 14px;
+  outline: none;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+/* Botón Subscribe */
+.subscribe-form button {
+  background-color: #000;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 14px;
+  border-radius: 30px; /* Opcional, para el botón redondeado como el tuyo */
+  transition: color 0.4 ease;
+  
+}
+
+.subscribe-form button:hover {
+  background-image: url("./img/madera\ roja-2.png");
+  background-size: cover;
+  background-position: center;
+  color: white;
+}
+
+/* Footer Links */
+.footer-links {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column; /* Siempre en columna */
+  align-items: center;
+  gap: 20px; /* Menos espacio entre las columnas */
+}
+
+/* Cada columna */
+.footer-column {
+  text-align: center;
+}
+
+.footer-column h4 {
+  color: #b82929;
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+/* Lista dentro de las columnas */
+.footer-column ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* List items */
+.footer-column ul li a {
+  margin-bottom: 8px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: #000;
+  text-decoration: none;
+}
+
+/* Hover en los li: cambiar color y tamaño */
+.footer-column ul li a:hover {
+  color: #c92a2a;
+  
+}
+
+/* Footer inferior */
+.bottom-footer {
+  margin-top: 50px;
+  border-top: 1px solid #ccc;
+  padding-top: 30px;
+}
+
+/* Logo inferior */
+.logo-Footer img {
+  width: 200px;
+  margin: 0 auto;
+}
+
+/* Países */
+.countries {
+  font-size: 10px;
+  margin-top: 20px;
+  line-height: 1.5;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 10px;
+}
+
+/* Redes sociales */
+.social-icons {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.social-icons a i {
+  font-size: 24px;
+  color: black;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.social-icons a:hover i {
+  color: #b82929;
+  transform: scale(1.2);
+}
+
+@media (min-width: 540px) {
+  /* Formularios en línea */
+  .subscribe-form {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+  }
+
+  /* Inputs más grandes */
+  .subscribe-form input[type="email"] {
+    width: 300px;
+    font-size: 15px;
+    text-align: left;
+  }
+
+  .subscribe-form button {
+    font-size: 16px;
+    padding: 10px 25px;
+  }
+
+  /* Links organizados en filas */
+  .footer-links {
+    flex-direction: row;
+    justify-content: center;
+    gap: 100px;
+    text-align: left;
+  }
+
+  .footer-column {
+    text-align: left;
+  }
+
+  .footer-column h4 {
+    font-size: 16px;
+    margin-bottom: 15px;
+  }
+
+  .footer-column ul li {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+
+  /* Footer inferior */
+  .bottom-footer {
+    margin-top: 60px;
+    padding-top: 30px;
+  }
+
+  .logo-Footer img {
+    width: 270px;
+  }
+
+  .countries {
+    font-size: 12px;
+    margin-top: 20px;
+    max-width: 1000px;
+    line-height: 1.6;
+  }
+
+  /* Redes sociales más separadas */
+  .social-icons {
+    margin-top: 25px;
+    gap: 30px;
+  }
+
+  .social-icons a i {
+    width: 28px;
+    height: 28px;
+  }
+}
+.marquee {
+  background-color: #000000;
+  overflow: hidden;
+  width: 100%;
+  white-space: nowrap;
+}
+
+.marquee-inner {
+  display: flex;
+  width: fit-content;
+  animation: scroll-left 40s linear infinite;
+}
+
+.marquee-content {
+  display: flex;
+  align-items: center;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-weight: bold;
+  font-size: 30px;
+  color: #f5f5f5;
+  padding: 15px 0;
+}
+
+.marquee-content span {
+  margin: 0 20px;
+}
+
+/* Animación continua, sin parones */
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
